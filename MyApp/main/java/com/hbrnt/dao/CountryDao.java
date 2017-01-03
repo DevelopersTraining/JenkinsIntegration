@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 import com.hbrnt.pojo.cache.Country;
 import com.hbrnt.utl.HibernateUtils;
 //Class CountryDao
-//
 public class CountryDao implements ICountryDao {
 	
 	SessionFactory sf;

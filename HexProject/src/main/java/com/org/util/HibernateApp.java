@@ -11,7 +11,7 @@ public class HibernateApp {
 	
 	public static void main(String[] args) {
 		// creating configuration object
-		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		SessionFactory factory = new Configuration().configure("/src/main/java//hibernate.cfg.xml").buildSessionFactory();
 		// creating session object
 		Session session = factory.openSession();
 		// creating transaction object

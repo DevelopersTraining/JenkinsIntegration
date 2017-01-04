@@ -21,11 +21,21 @@ public class Stock implements java.io.Serializable {
     private String Name;
     @Column(name="DESCRIPTION")
     private String Description;
+    @Column(name="QUANTITY")
+    private int quantity;
 
     public Stock() {
     }
 
-    public Stock(int itemid, String name, String description) {
+    public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public Stock(int itemid, String name, String description) {
         this.itemid = itemid;
         Name = name;
         Description = description;

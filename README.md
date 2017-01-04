@@ -6,3 +6,4 @@ Oracle DB Details:
 	hostname: 192.168.20.172
 	port: 1521
 	SID: xe
+	

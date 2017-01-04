@@ -1,6 +1,9 @@
-# JenkinsIntegration
-# New line
-Suryas changes
-qwerty
-hi guys ,this is sleeping shiva
-# End of file
+# HEXPROJECT
+
+Oracle DB Details:
+	username: HEXPROJECT_DB
+	password: admin
+	hostname: 192.168.20.172
+	port: 1521
+	SID: xe
+	

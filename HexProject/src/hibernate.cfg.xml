@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>  
 <hibernate-configuration>
 	<session-factory>
 		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
@@ -21,7 +22,7 @@
 		<property name="show_sql">true</property>
 		
 		<!-- Drop and re-create the database schema on startup -->
-		<property name="hbm2ddl.auto">Update</property>
+		<property name="hbm2ddl.auto">update</property>
 		
 		<mapping class="com.org.pojo.AppUser"/>
 		<mapping class="com.org.pojo.DbaUser"/>

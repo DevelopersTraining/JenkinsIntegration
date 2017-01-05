@@ -6,10 +6,7 @@ import java.util.List;
 import org.hibernate.Query;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.org.bean.Item;
 import com.org.pojo.AppUser;
 import com.org.pojo.Stock;
@@ -23,7 +20,6 @@ public class AppGenericDao {
 		 System.out.println("Starting::getRows");
 		 
 		 List<Item> items = new ArrayList<Item>();
-		 List<Object> currentStock;		 
 		 Session session = null;
 		 
 		 try {
@@ -58,8 +54,6 @@ public class AppGenericDao {
 	public boolean selectUser(String userName, String password) {
 		System.out.println("Starting::selectUser");
 		 
-		 List<Item> items = new ArrayList<Item>();
-		 List<Object> currentStock;		 
 		 Session session = null;
 		 
 		 try {

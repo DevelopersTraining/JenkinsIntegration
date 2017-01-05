@@ -16,14 +16,11 @@ public class AppGenericDaoTest {
 
 	@Test
 	public void getRowTest(){
-		
 		daoTest.getRows();		
 	}
 	
 	@Test
 	public void getUser(){
-		
 		daoTest.selectUser("edson","edson");
-		
 	}
 }

@@ -7,10 +7,13 @@ import com.org.pojo.AppUser;
 import com.org.pojo.Role;
 import com.org.util.HibernateUtil;
 
-public class UserDao {
+public class UserDao implements UserDaoInterface {
 
 	private Session session = null;
 
+	/* (non-Javadoc)
+	 * @see com.org.dao.UserDaoInterface#addUser(com.org.bean.User)
+	 */
 	public boolean addUser(User newUser) {
 
 		try {
@@ -50,6 +53,9 @@ public class UserDao {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.org.dao.UserDaoInterface#deleteUser(com.org.bean.User)
+	 */
 	public boolean deleteUser(User deleteUser) {
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();

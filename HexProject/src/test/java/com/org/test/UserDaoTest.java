@@ -9,10 +9,11 @@ import org.junit.Test;
 
 import com.org.bean.User;
 import com.org.dao.UserDao;
+import com.org.dao.UserDaoInterface;
 
 public class UserDaoTest {
 
-	UserDao userDaoTest;
+	UserDaoInterface userDaoTest;
 
 	@Before
 	public void setUpClass() {

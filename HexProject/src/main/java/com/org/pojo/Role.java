@@ -6,38 +6,42 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "ROLE")
-public class Role implements java.io.Serializable {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ROLE_ID")
-    private int roleid;
+    private Long roleId;
+    
     @Column(name="ROLE_NAME")
-    private String role_name;
-
-    public Role(int roleid, String role_name) {
-        this.roleid = roleid;
-        this.role_name = role_name;
+    private String roleName;
+    
+    public Role(){    	
     }
 
-    public int getRoleid() {
-        return roleid;
+    public Role(Long roleId, String roleName) {
+        this.roleId = roleId;
+        this.roleName = roleName;
     }
 
-    public void setRoleid(int roleid) {
-        this.roleid = roleid;
+    public Long getRoleId() {
+        return roleId;
     }
 
-    public String getRole_name() {
-        return role_name;
+    public void setRoleid(Long roleId) {
+        this.roleId = roleId;
     }
 
-    public void setRole_name(String role_name) {
-        this.role_name = role_name;
+    public String getRoleName() {
+        return roleName;
     }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+    
+    
 }

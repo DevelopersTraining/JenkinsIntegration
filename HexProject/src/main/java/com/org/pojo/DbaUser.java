@@ -6,22 +6,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "DBA_USER")
-public class DbaUser implements java.io.Serializable {
+public class DbaUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "DBA_ID")
     private int dba_id;
+    
     @Column(name="DBA_NAME")
     private String dba_name;
+    
     @Column(name="PASSWORD")
     private String password;
 
+    
     public DbaUser(int dba_id, String dba_name, String password) {
         this.dba_id = dba_id;
         this.dba_name = dba_name;

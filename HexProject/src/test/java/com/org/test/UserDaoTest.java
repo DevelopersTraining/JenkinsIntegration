@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.Calendar;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.org.bean.User;
@@ -29,6 +30,7 @@ public class UserDaoTest {
 		userDaoTest.addUser(user);
 	}
 
+	@Ignore("Not necessary everytime")
 	@Test
 	public void deleteUser() {
 		User user = new User();

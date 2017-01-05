@@ -1,39 +1,52 @@
 package com.org.bean;
 
-
+import java.sql.Date;
 
 public class User {
+	private Long userId;
 	private Long roleId;
 	private String userName;
 	private String userPassword;
-	private String regDate;
-	
-	
+	private Date regDate;
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
 	public Long getRoleId() {
 		return roleId;
 	}
+
 	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
 	}
+
 	public String getUserName() {
 		return userName;
 	}
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
 	public String getUserPassword() {
 		return userPassword;
 	}
+
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
-	public String getRegDate() {
+
+	public Date getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(String regDate) {
+
+	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	
-	
-	
+
 }

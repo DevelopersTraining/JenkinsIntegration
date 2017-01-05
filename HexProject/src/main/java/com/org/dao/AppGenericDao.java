@@ -5,19 +5,15 @@ import java.util.List;
 
 import org.hibernate.Query;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.org.bean.Item;
 import com.org.pojo.AppUser;
 import com.org.pojo.Stock;
-
 import com.org.util.HibernateUtil;
-import org.hibernate.Criteria;
 
 public class AppGenericDao {
 
@@ -25,7 +21,6 @@ public class AppGenericDao {
 		System.out.println("Starting::getRows");
 
 		List<Item> items = new ArrayList<Item>();
-		List<Object> currentStock;
 		Session session = null;
 
 		try {
@@ -42,7 +37,6 @@ public class AppGenericDao {
 				System.out.println(item.toString());
 				items.add(new Item(item.getItemId(), item.getName(), item.getDescription(), item.getQuantity()));
 			}
-
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			System.out.println("Error" + e.getMessage());
@@ -58,9 +52,6 @@ public class AppGenericDao {
 
 	public boolean selectUser(String userName, String password) {
 		System.out.println("Starting::selectUser");
-
-		List<Item> items = new ArrayList<Item>();
-		List<Object> currentStock;
 		Session session = null;
 
 		try {

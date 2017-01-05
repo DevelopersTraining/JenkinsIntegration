@@ -1,7 +1,5 @@
 package com.org.bean;
 
-import javax.persistence.Column;
-
 public class Item {
 
 	private Long itemId;

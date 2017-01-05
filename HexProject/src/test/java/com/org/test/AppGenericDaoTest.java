@@ -64,4 +64,5 @@ public class AppGenericDaoTest {
 		daoTest.deleteStock(item);
 		System.out.println("Delete Stock Successful");
 	}
+
 }

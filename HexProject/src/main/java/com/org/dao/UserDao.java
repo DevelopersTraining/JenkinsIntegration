@@ -1,10 +1,17 @@
 package com.org.dao;
 
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.org.bean.Item;
 import com.org.bean.User;
 import com.org.pojo.AppUser;
 import com.org.pojo.Role;
+import com.org.pojo.Stock;
 import com.org.util.HibernateUtil;
 
 public class UserDao implements UserDaoInterface {
@@ -77,6 +84,35 @@ public class UserDao implements UserDaoInterface {
 				session.close();
 		}
 		return true;
+	}
+
+	public ArrayList<User> getUserList() {
+		ArrayList<User> userList = new ArrayList<User>();
+		
+		try {
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+				
+			
+			// Get user from AppUser
+			String hql = "FROM AppUser";
+			Query query = session.createQuery(hql);
+			List<AppUser> results = query.list();
+
+			System.out.println("Number of records:" + results.size());
+
+			for (AppUser us : results) {
+				System.out.println(us.toString());
+				//(Long userId, Long roleId, String roleName, String userName, String userPassword, Date regDate){
+				userList.add(new User(us.getUserId(), us.getRole().getRoleId(), us.getRole().getRoleName(), us.getUserName(),us.getPassword(), us.getRegDate()));
+			}
+			session.getTransaction().commit();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return userList;
 	}
 
 }

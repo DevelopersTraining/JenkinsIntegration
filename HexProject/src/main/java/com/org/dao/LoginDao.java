@@ -12,8 +12,11 @@ import com.org.pojo.AppUser;
 import com.org.pojo.DbaUser;
 import com.org.util.HibernateUtil;
 
-public class LoginDao {
+public class LoginDao implements LoginDaoInterface {
 
+	/* (non-Javadoc)
+	 * @see com.org.dao.LoginDaoInterface#validateLogin(com.org.bean.User)
+	 */
 	public User validateLogin(User user) {
 		User validUser = null;
 		SessionFactory sf = HibernateUtil.getSessionFactory();

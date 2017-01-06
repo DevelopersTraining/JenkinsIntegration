@@ -27,7 +27,10 @@ form {
 </head>
 <body>
 
-
+<!-- <form action="form_action.asp">
+  Radio Button: <input type="radio" id="myRadio" name="test"required>
+  <input type="submit">
+</form> -->
 
 <body style="background-color:powderblue;">
 	<header>
@@ -44,10 +47,10 @@ form {
 		<p class ="normal">
 		
 			<font color="maroon">User Name :</font><input type="text"
-			name="AdminId" /><br />
-			<br/> <font color="maroon">Password :</font><input type="password" name="Password" /><br />
-			<br/> <font color="red"><input type="radio" name="user_type" value="dba">DBA
-			User<br /></font><font color="red"> <input type="radio" name="user_type" value="other">
+			name="AdminId" required /><br />
+			<br/> <font color="maroon">Password :</font><input type="password" name="Password" required/><br />
+			<br/> <font color="red"><input type="radio" name="user_type" value="dba"required>DBA
+			User<br /></font><font color="red"> <input type="radio" name="user_type" value="other"required>
 			Other Users<br></font> <br> <input type="submit" value="login" />
 			<button type="reset" value="Cancel">Cancel</button></p>
 		</center>

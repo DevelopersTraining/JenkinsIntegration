@@ -9,6 +9,17 @@ public class User {
 	private String userName;
 	private String userPassword;
 	private Date regDate;
+	
+	public User(){}
+	
+	public User (Long userId, Long roleId, String roleName, String userName, String userPassword, Date regDate){
+		this.userId = userId;
+		this.roleId = roleId;
+		this.roleName = roleName;
+		this.userName = userName;
+		this.userPassword = userPassword;
+		this.regDate = regDate;
+	}
 
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
@@ -57,5 +68,13 @@ public class User {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", roleId=" + roleId + ", roleName=" + roleName + ", userName=" + userName
+				+ ", userPassword=" + userPassword + ", regDate=" + regDate + "]";
+	}
+	
+	
 
 }

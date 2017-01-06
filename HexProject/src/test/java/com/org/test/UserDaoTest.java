@@ -19,7 +19,8 @@ public class UserDaoTest {
 	public void setUpClass() {
 		userDaoTest = new UserDao();
 	}
-
+	
+	@Ignore("Not necessary for now")
 	@Test
 	public void addUser() {
 		User user = new User();
@@ -38,5 +39,13 @@ public class UserDaoTest {
 		user.setUserId(19l);
 		userDaoTest.deleteUser(user);
 	}
+	
+	@Test
+	public void getUsers() {
+		
+		userDaoTest.getUserList();
+	}
+	
+	
 
 }

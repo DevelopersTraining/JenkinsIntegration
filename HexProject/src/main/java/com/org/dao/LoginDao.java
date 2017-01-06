@@ -32,16 +32,26 @@ public class LoginDao implements LoginDaoInterface {
 			Criteria criteria = s.createCriteria(DbaUser.class);
 			criteria.add(Restrictions.eq("dba_name", user.getUserName()));
 			List<DbaUser> results = criteria.list();
-			DbaUser dbaUser = results.get(0);
+			if(results.isEmpty())
+			{
+				return null;
+			}
+				DbaUser dbaUser = results.get(0);
 			password = dbaUser.getPassword();
 			roleName = user.getRoleName();
+			
 		} else {
 			Criteria criteria = s.createCriteria(AppUser.class);
 			criteria.add(Restrictions.eq("userName", user.getUserName()));
 			List<AppUser> results = criteria.list();
+			if(results.isEmpty())
+			{
+				return null;
+			}
 			AppUser appUser = results.get(0);
 			roleName = appUser.getRole().getRoleName();
 			password = appUser.getPassword();
+			
 		}
 
 		if (password.equals(user.getUserPassword())) {

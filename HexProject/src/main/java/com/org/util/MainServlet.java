@@ -38,31 +38,39 @@ public class MainServlet extends HttpServlet {
 		userName = request.getParameter("AdminId");
 		password = request.getParameter("Password");
 		userType = request.getParameter("user_type");
-
+		
 		User user = new User();
-
 		user.setUserName(userName);
 		user.setUserPassword(password);
 		user.setRoleName(userType);
+<<<<<<< HEAD
 
 		LoginDaoInterface validate = new LoginDao();
+=======
+		LoginDao validate = new LoginDao();
+>>>>>>> d39c01aefc4e79aab2f818421c24272a0b1736d6
 
 		User isValid = validate.validateLogin(user);
 
 		if (isValid != null) {
 			if (userType.equals("dba")) {
-				response.getWriter().append("DBA Logged In");
+				//response.getWriter().append("DBA Logged In");
+				request.getRequestDispatcher("/userServlet").forward(request, response);
 			} else {
 				String role = isValid.getRoleName();
 				if (role.equalsIgnoreCase("Admin")) {
-					response.getWriter().append("Admin Logged In");
+					//response.getWriter().append("Admin Logged In");
+					request.setAttribute("getStockList", 1);
+					request.getRequestDispatcher("/stockServlet").forward(request, response);
 				} else {
-					response.getWriter().append("User Logged In");
+					request.getRequestDispatcher("user.jsp").forward(request, response);
+					//response.getWriter().append("User Logged In");
 				}
 			}
 
 		} else {
-			response.getWriter().append("Failure");
+			//response.getWriter().append("Failure");
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
 		}
 
 	}

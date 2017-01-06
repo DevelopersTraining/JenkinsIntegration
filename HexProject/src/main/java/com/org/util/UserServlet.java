@@ -46,6 +46,7 @@ public class UserServlet extends HttpServlet{
 			
 			String requestType = "";
 			
+			//Validate the request
 			if(request.getAttribute("requestType")!=null){
 				requestType = request.getAttribute("requestType").toString();
 			}

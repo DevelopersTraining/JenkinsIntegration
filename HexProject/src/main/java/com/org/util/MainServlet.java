@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.org.bean.User;
 import com.org.dao.LoginDao;
+import com.org.dao.LoginDaoInterface;
 
 /**
  * Servlet implementation class MainServlet
@@ -44,7 +45,7 @@ public class MainServlet extends HttpServlet {
 		user.setUserPassword(password);
 		user.setRoleName(userType);
 
-		LoginDao validate = new LoginDao();
+		LoginDaoInterface validate = new LoginDao();
 
 		User isValid = validate.validateLogin(user);
 

@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>StockServlet</servlet-name>
+  	<display-name>StockServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.org.util.StockServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>StockServlet</servlet-name>
+  	<url-pattern>/stockServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -5,9 +5,18 @@ import java.sql.Date;
 public class User {
 	private Long userId;
 	private Long roleId;
+	private String roleName;
 	private String userName;
 	private String userPassword;
 	private Date regDate;
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+	public String getRoleName() {
+		return roleName;
+	}
 
 	public void setUserId(Long userId) {
 		this.userId = userId;

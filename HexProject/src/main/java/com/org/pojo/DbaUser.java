@@ -11,45 +11,48 @@ import javax.persistence.Table;
 @Table(name = "DBA_USER")
 public class DbaUser {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "DBA_ID")
-    private int dba_id;
-    
-    @Column(name="DBA_NAME")
-    private String dba_name;
-    
-    @Column(name="PASSWORD")
-    private String password;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "DBA_ID")
+	private int dba_id;
 
-    
-    public DbaUser(int dba_id, String dba_name, String password) {
-        this.dba_id = dba_id;
-        this.dba_name = dba_name;
-        this.password = password;
-    }
+	@Column(name = "DBA_NAME", unique = true)
+	private String dba_name;
 
-    public int getDba_id() {
-        return dba_id;
-    }
+	@Column(name = "PASSWORD")
+	private String password;
 
-    public void setDba_id(int dba_id) {
-        this.dba_id = dba_id;
-    }
+	public DbaUser() {
+		// TODO Auto-generated constructor stub
+	}
 
-    public String getDba_name() {
-        return dba_name;
-    }
+	public DbaUser(int dba_id, String dba_name, String password) {
+		this.dba_id = dba_id;
+		this.dba_name = dba_name;
+		this.password = password;
+	}
 
-    public void setDba_name(String dba_name) {
-        this.dba_name = dba_name;
-    }
+	public int getDba_id() {
+		return dba_id;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setDba_id(int dba_id) {
+		this.dba_id = dba_id;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public String getDba_name() {
+		return dba_name;
+	}
+
+	public void setDba_name(String dba_name) {
+		this.dba_name = dba_name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

@@ -39,23 +39,41 @@ public class UserServlet extends HttpServlet{
 			throws ServletException, IOException {
 		
 		String responseURL = "/dba.jsp";
-		String requestType = request.getAttribute("requestType").toString();
+		ArrayList<User> listUser = new ArrayList();
+		User someUser = null;
 		
-		ArrayList<User> listUser = null;
-		
-		if(requestType.equalsIgnoreCase("getUserList")){
+		try {
+			String requestType = request.getAttribute("requestType").toString();
+			
+			if(requestType.equalsIgnoreCase("addUser")){
+				someUser = new User();
+				someUser.setUserName(request.getParameter("userName").toString());
+				Long roleId = Long.valueOf(request.getParameter("roleId").toString());
+				someUser.setRoleId(roleId);
+				someUser.setUserPassword(request.getParameter("password"));
+				
+				request.setAttribute("addUserOk", "An user was added!");
+			
+			}else if(requestType.equalsIgnoreCase("deleteUser")){
+				
+				someUser = new User();
+				Long userId = Long.valueOf(request.getParameter("userId").toString());
+				someUser.setUserId(userId);
+				userDao.deleteUser(someUser);
+				
+				request.setAttribute("deleteUserOk", "The user was deleted!");
+				
+			}
+			
+			//Always have to get the user list to be showed in the JSP
 			listUser = userDao.getUserList();
 			request.setAttribute("userList", listUser);
-		}else if(requestType.equalsIgnoreCase("addUser")){
 			
 			
-			listUser = userDao.getUserList();
-		}else if(requestType.equalsIgnoreCase("deleteUser")){
-			
-			
-			listUser = userDao.getUserList();
-		}
-		
+		} catch (Exception e) {
+			System.out.println("Error:"+e.toString());
+			e.printStackTrace();
+		}		
 		
 		//Return to the JSP
 		RequestDispatcher dispatcher = request.getRequestDispatcher(responseURL);

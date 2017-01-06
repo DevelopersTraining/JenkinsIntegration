@@ -42,7 +42,7 @@ public class UserDao implements UserDaoInterface {
 			user.setRole(role);
 			user.setPassword(newUser.getUserPassword());
 			user.setUserName(newUser.getUserName());
-			user.setRegDate(newUser.getRegDate());
+			//user.setRegDate(newUser.getRegDate());
 
 			session.persist(user);
 

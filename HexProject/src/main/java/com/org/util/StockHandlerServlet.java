@@ -1,28 +1,25 @@
 package com.org.util;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.org.bean.Item;
 import com.org.dao.AppGenericDao;
 
 /**
- * Servlet implementation class ListServlet
+ * Servlet implementation class StockHandlerServlet
  */
-@WebServlet("/stockServlet")
-public class StockServlet extends HttpServlet {
+
+public class StockHandlerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public StockServlet() {
+	public StockHandlerServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,22 +31,24 @@ public class StockServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at:
-		// ").append(request.getContextPath());
-
-		String requestType = "";
-
-		// Validate the request
-		if (request.getAttribute("getStockList") != null) {
-			requestType = request.getParameter("stock").toString();
-		}
-
-		System.out.println("retrieve from stock");
 		AppGenericDao appDao = new AppGenericDao();
-		List<Item> stockItems = appDao.getRows();
-		request.setAttribute("stockList", stockItems);
-		request.getRequestDispatcher("index.jsp").forward(request, response);
-
+		String operation = request.getParameter("stockButton");
+		String rowId = request.getParameter("itemId");
+		if (operation.equalsIgnoreCase("add")) {
+			response.sendRedirect("AdminAddStock.jsp");
+		} else if (operation.equalsIgnoreCase("update")) {
+			// Item itemToUpdate = appDao.getRow(rowId);
+			// request.setAttribute("itemData", itemToUpdate);
+			// request.getRequestDispatcher("update.jsp").forward(request,
+			// response);
+		} else if (operation.equalsIgnoreCase("delete")) {
+			// Item itemToUpdate = appDao.getRow(rowId);
+			// request.setAttribute("itemData", itemToUpdate);
+			// request.getRequestDispatcher("delete.jsp").forward(request,
+			// response);
+		} else {
+			response.sendRedirect("index.jsp");
+		}
 	}
 
 	/**

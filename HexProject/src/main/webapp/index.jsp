@@ -1,6 +1,7 @@
  <%@ page import="java.io.*,java.util.ArrayList,com.org.bean.Item,java.util.Iterator"%> 
 <html>
 <body>
+<form action="StockHandlerServlet" method="post">
 <h2>Hello World!</h2>
 <h2> How are you?!</h2>
 <table border=1>
@@ -23,5 +24,9 @@
         </tr>
 <% }%>
 </table>
+<input type="submit" name="stockButton" value="add"/> 
+<input type="submit" name="stockButton" value="update"/> 
+<input type="submit" name="stockButton" value="delete"/> 
+</form>
 </body>
 </html>

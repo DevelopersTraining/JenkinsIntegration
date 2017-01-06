@@ -3,9 +3,8 @@ package com.org.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Query;
-
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -126,6 +125,20 @@ public class AppGenericDao {
 		Query query = session.createQuery(deleteQuery);
 		int rows = query.executeUpdate();
 		session.getTransaction().commit();
+	}
+
+	public Item getRow(String id) {
+		int itemId = Integer.parseInt(id);
+		Item item = new Item();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction t = session.beginTransaction();
+		Stock current = (Stock) session.get(Stock.class, itemId);
+		item.setItemId(current.getItemId());
+		item.setName(current.getName());
+		item.setDescription(current.getDescription());
+		item.setQuantity(current.getQuantity());
+		return item;
+
 	}
 
 }

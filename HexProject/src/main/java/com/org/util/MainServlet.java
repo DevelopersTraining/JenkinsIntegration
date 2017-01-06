@@ -58,7 +58,7 @@ public class MainServlet extends HttpServlet {
 				String role = isValid.getRoleName();
 				if (role.equalsIgnoreCase("Admin")) {
 					// response.getWriter().append("Admin Logged In");
-					request.setAttribute("getStockList", 1);
+					request.setAttribute("getStockList", "listAdmin");
 					request.getRequestDispatcher("/stockServlet").forward(request, response);
 				} else {
 					AppGenericDao appDao = new AppGenericDao();

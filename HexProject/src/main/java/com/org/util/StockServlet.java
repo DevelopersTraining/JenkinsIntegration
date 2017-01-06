@@ -37,11 +37,12 @@ public class StockServlet extends HttpServlet {
 		// response.getWriter().append("Served at:
 		// ").append(request.getContextPath());
 		if (request.getAttribute("getStockList") != null) {
+			System.out.println("retrieve from stock");
 			AppGenericDao appDao = new AppGenericDao();
 			List<Item> stockItems = appDao.getRows();
 
-			request.getSession().setAttribute("stockList", stockItems);
-			request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+			request.setAttribute("stockList", stockItems);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
 
 	}

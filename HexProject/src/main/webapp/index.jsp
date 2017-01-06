@@ -11,20 +11,15 @@
 <th>Quantity </th>
 </tr>
 <%  
-	Long itemId = 0l;
-	String name = null;
-	String description = null;
-	Long quantity = 0l;
 	ArrayList<Item> stockList= (ArrayList<Item>) request.getAttribute("stockList");
-    Iterator<Item> iter = stockList.iterator();
-    while(iter.hasNext()){
-        Item items = iter.next();
+	System.out.println(stockList);
+    for(Item items:stockList){
         %>
         <tr>
-        <td><input type="radio" name="itemId"   value="<%=itemId%>"/></td>
-        <td > <%= name %> </td>
-        <td > <%=description%> </td>
-        <td > <%=quantity%> </td>
+        <td><input type="radio" name="itemId"   value="<%=items.getItemId()%>"/></td>
+        <td > <%= items.getName() %> </td>
+        <td > <%=items.getDescription()%> </td>
+        <td > <%=items.getQuantity()%> </td>
         </tr>
 <% }%>
 </table>

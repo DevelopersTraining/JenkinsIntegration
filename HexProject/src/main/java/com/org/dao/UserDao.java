@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.stereotype.Service;
 
 import com.org.bean.Item;
 import com.org.bean.User;
@@ -14,6 +15,8 @@ import com.org.pojo.Role;
 import com.org.pojo.Stock;
 import com.org.util.HibernateUtil;
 
+
+@Service
 public class UserDao implements UserDaoInterface {
 
 	private Session session = null;

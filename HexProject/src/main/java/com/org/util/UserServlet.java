@@ -21,7 +21,7 @@ import com.org.dao.UserDaoInterface;
 public class UserServlet extends HttpServlet{
 	
 	@Autowired
-	UserDaoInterface userDao;
+	UserDao userDao;
 	
 	public UserServlet() {
 		super();
@@ -43,7 +43,12 @@ public class UserServlet extends HttpServlet{
 		User someUser = null;
 		
 		try {
-			String requestType = request.getAttribute("requestType").toString();
+			
+			String requestType = "";
+			
+			if(request.getAttribute("requestType")!=null){
+				requestType = request.getAttribute("requestType").toString();
+			}
 			
 			if(requestType.equalsIgnoreCase("addUser")){
 				someUser = new User();
@@ -65,6 +70,7 @@ public class UserServlet extends HttpServlet{
 				
 			}
 			
+			userDao = new UserDao();
 			//Always have to get the user list to be showed in the JSP
 			listUser = userDao.getUserList();
 			request.setAttribute("userList", listUser);

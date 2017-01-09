@@ -1,19 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+
+<!-- <style> -->
+/* form { */
+/* 	position: fixed; */
+/* 	top: 40%; */
+/* 	left: 50%; */
+/* 	margin-top: -50px; */
+/* 	margin-left: -100px; */
+/* } */
+<!-- </style> -->
+
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.io.*,com.org.bean.Item"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="login.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
-<style>
-form {
-	position: fixed;
-	top: 40%;
-	left: 50%;
-	margin-top: -50px;
-	margin-left: -100px;
-}
-</style>
 <% 
 Item item = (Item) request.getAttribute("itemData");
 String  name  = item.getName();        
@@ -22,17 +27,37 @@ Long  quantity  = item.getQuantity();
 %>
 </head>
 <body>
-<body style="background-color: powderblue;">
-	<header>
-	<h1 align="center">
-		<font color="blue">ADMIN DELETE STOCK PAGE</font>
-	</h1>
-	</header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            
+          </button>
+          <a class="navbar-brand" href="#">Hexa Store</a>
+          <form action="Login.jsp" class="navbar-form navbar-right">
+    		<input class="btn btn-success" type="submit" value="Sign Off" />
+		  </form>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
 
-	<form action="StockHandlerServlet" method="post">
-		<center>
-			<table style="width: 100%">
-				<tr>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>ADMIN DELETE STOCK PAGE</h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <form action="StockHandlerServlet" method="post">
+		
+		<div class="table-responsive">
+		<table class="table">
+			<tr>
 					<td>Item name:</td>
 					<td><%= name %></td>
 				</tr>
@@ -44,14 +69,20 @@ Long  quantity  = item.getQuantity();
 					<td>Quantity:</td>
 					<td><%= quantity %></td>
 				</tr>
-			</table>
-			<input type="submit" name="delete" value="delete" />
-			<input type="submit" name="delete" value="cancel"/>
-			<input type="hidden" name="id" value="<%=item.getItemId()%>">
-			<input type="hidden" name="item" value="<%=item.getName()%>">
-			<input type="hidden" name="description" value="<%=item.getDescription()%>">
-			<input type="hidden" name="quantity" value="<%=item.getQuantity()%>">
-			<input type="hidden" name="stockHandler" value="stockDelete">
+		</table>
+		</div>
+			<input  class="btn btn-primary btn-sm"type="submit" name="delete" value="delete" />
+			<input class="btn btn-primary btn-sm" type="submit" name="delete" value="cancel"/>
+			<input class="btn btn-primary btn-sm" type="hidden" name="id" value="<%=item.getItemId()%>">
+			<input class="btn btn-primary btn-sm" type="hidden" name="item" value="<%=item.getName()%>">
+			<input class="btn btn-primary btn-sm" type="hidden" name="description" value="<%=item.getDescription()%>">
+			<input class="btn btn-primary btn-sm" type="hidden" name="quantity" value="<%=item.getQuantity()%>">
+			<input  class="btn btn-primary btn-sm" type="hidden" name="stockHandler" value="stockDelete">		
 	</form>
-</body>
+      <hr>
+      <footer>
+        <p>&copy; 2017 Company, Inc.</p>
+      </footer>
+    </div> <!-- /container -->
+  </body>
 </html>

@@ -40,9 +40,9 @@ public class StockServlet extends HttpServlet {
 		String requestType = "";
 
 		// Validate the request
-		if (request.getAttribute("getStockList") != null) {
-			requestType = request.getParameter("stock").toString();
-		}
+		// if (request.getAttribute("getStockList") != null) {
+		// requestType = request.getParameter("stock").toString();
+		// }
 
 		System.out.println("retrieve from stock");
 		AppGenericDao appDao = new AppGenericDao();

@@ -3,6 +3,7 @@ package com.org.util;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +14,7 @@ import com.org.dao.AppGenericDao;
 /**
  * Servlet implementation class StockHandlerServlet
  */
-
+@WebServlet("/StockHandlerServlet")
 public class StockHandlerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -45,24 +46,19 @@ public class StockHandlerServlet extends HttpServlet {
 			String rowId = request.getParameter("itemId");
 			if (operation.equalsIgnoreCase("add")) {
 				response.sendRedirect("AdminAddStock.jsp");
-			}
-
-			if (operation.equalsIgnoreCase("update")) {
+			} else if (operation.equalsIgnoreCase("update")) {
 				// Item itemToUpdate = appDao.getRow(rowId);
 				// request.setAttribute("itemData", itemToUpdate);
 				// request.getRequestDispatcher("update.jsp").forward(request,
 				// response);
-			}
-
-			if (operation.equalsIgnoreCase("delete")) {
+			} else if (operation.equalsIgnoreCase("delete")) {
 				// Item itemToUpdate = appDao.getRow(rowId);
 				// request.setAttribute("itemData", itemToUpdate);
 				// request.getRequestDispatcher("delete.jsp").forward(request,
 				// response);
+			} else {
+				response.sendRedirect("index.jsp");
 			}
-
-			response.sendRedirect("index.jsp");
-
 		}
 
 		if (redirectHandler.equalsIgnoreCase("stockAdd")) {

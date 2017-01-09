@@ -42,8 +42,10 @@
                 </label>
                 <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
                 </form>
+            <%if(request.getAttribute("loginError") != null){%>
+                	<span style="color:red; font-size=12px" ><%= request.getAttribute("loginError").toString() %></span>
+            <%} %>    
             </div>
-  
         </div>
     </div>
 </div>

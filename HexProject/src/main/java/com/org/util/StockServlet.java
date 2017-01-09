@@ -48,7 +48,7 @@ public class StockServlet extends HttpServlet {
 		AppGenericDao appDao = new AppGenericDao();
 		List<Item> stockItems = appDao.getRows();
 		request.setAttribute("stockList", stockItems);
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("admin.jsp").forward(request, response);
 
 	}
 

@@ -34,25 +34,23 @@ Long  quantity  = item.getQuantity();
 			<table style="width: 100%">
 				<tr>
 					<td>Item name:</td>
-					<td><input type="text" name="item" required='true' value=<%= name %>></td>
+					<td><%= name %></td>
 				</tr>
 				<tr>
 					<td>Description:</td>
-					<td>
-						<textarea name="description" required='true' rows="5" cols="20"> <%= description %> 
-						</textarea>
-					</td>
+					<td><%= description %></td>
 				</tr>
 				<tr>
 					<td>Quantity:</td>
-					<td><!-- <input type="text" name="quantity" pattern="[0-9]" value=<%= quantity %>/>  -->
-						<input type="text" name="quantity" required='true' onkeypress='return event.charCode >= 48 && event.charCode <= 57' value=<%= quantity %>>
-					</td>
+					<td><%= quantity %></td>
 				</tr>
 			</table>
-			<input type="submit" value="Delete Item" />
-			<button type="reset" value="Cancel">Clear</button>
+			<input type="submit" name="delete" value="delete" />
+			<input type="submit" name="delete" value="cancel"/>
 			<input type="hidden" name="id" value="<%=item.getItemId()%>">
+			<input type="hidden" name="item" value="<%=item.getName()%>">
+			<input type="hidden" name="description" value="<%=item.getDescription()%>">
+			<input type="hidden" name="quantity" value="<%=item.getQuantity()%>">
 			<input type="hidden" name="stockHandler" value="stockDelete">
 	</form>
 </body>

@@ -57,7 +57,7 @@ public class StockHandlerServlet extends HttpServlet {
 				request.setAttribute("itemData", itemToDelete);
 				request.getRequestDispatcher("deleteItem.jsp").forward(request, response);
 			} else {
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("/stockServlet");
 			}
 		}
 
@@ -83,14 +83,20 @@ public class StockHandlerServlet extends HttpServlet {
 		}
 
 		if (redirectHandler.equalsIgnoreCase("stockDelete")) {
-			Item item = new Item();
-			item.setItemId(Long.parseLong(request.getParameter("id")));
-			item.setName(request.getParameter("item"));
-			item.setDescription(request.getParameter("description"));
-			item.setQuantity(Long.parseLong(request.getParameter("quantity")));
-			appDao.deleteStock(item);
-			request.setAttribute("getStockList", "listAdmin");
-			request.getRequestDispatcher("/stockServlet").forward(request, response);
+			if (request.getParameter("delete").equalsIgnoreCase("delete")) {
+				Item item = new Item();
+				item.setItemId(Long.parseLong(request.getParameter("id")));
+				item.setName(request.getParameter("item"));
+				item.setDescription(request.getParameter("description"));
+				item.setQuantity(Long.parseLong(request.getParameter("quantity")));
+				appDao.deleteStock(item);
+				request.setAttribute("getStockList", "listAdmin");
+				request.getRequestDispatcher("/stockServlet").forward(request, response);
+
+			} else {
+				request.setAttribute("getStockList", "listAdmin");
+				request.getRequestDispatcher("/stockServlet").forward(request, response);
+			}
 		}
 	}
 

@@ -28,11 +28,11 @@ form {
 			<table style="width: 100%">
 				<tr>
 					<td>Item name:</td>
-					<td><input type="text" name="item" required/></td>
+					<td><input type="text" name="item" required='true'/></td>
 				</tr>
 				<tr>
 					<td>Description:</td>
-					<td><textarea name="description" rows="5" cols="20" required></textarea>
+					<td><textarea name="description" rows="5" cols="20" required='true'></textarea>
 					</td>
 				</tr>
 				<!-- Description: </td><td><input type="text" name="description" /></td></tr>-->
@@ -40,7 +40,7 @@ form {
 					<td>Quantity:</td>
 					<!-- <td><input type="text" name="quantity" pattern="[0-9]+" /></td> -->
 					<td><input type="text" name="quantity"
-						onkeypress='return event.charCode >= 48 && event.charCode <= 57'required></input>
+						onkeypress='return event.charCode >= 48 && event.charCode <= 57'required='true'></input>
 					</td>
 				</tr>
 			</table>

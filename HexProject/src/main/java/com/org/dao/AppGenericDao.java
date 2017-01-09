@@ -114,6 +114,7 @@ public class AppGenericDao {
 		updated.setQuantity(item.getQuantity());
 		session.merge(updated);
 		t.commit();
+		session.close();
 		System.out.println("After Update" + current);
 
 	}
@@ -125,6 +126,7 @@ public class AppGenericDao {
 		Query query = session.createQuery(deleteQuery);
 		int rows = query.executeUpdate();
 		session.getTransaction().commit();
+		session.close();
 	}
 
 	public Item getRow(String id) {
@@ -137,7 +139,7 @@ public class AppGenericDao {
 		item.setName(current.getName());
 		item.setDescription(current.getDescription());
 		item.setQuantity(current.getQuantity());
-		System.out.println(item.toString());
+		session.close();
 		return item;
 
 	}

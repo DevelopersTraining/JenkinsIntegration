@@ -51,10 +51,11 @@ public class StockHandlerServlet extends HttpServlet {
 				request.setAttribute("itemData", itemToUpdate);
 				request.getRequestDispatcher("updateStock.jsp").forward(request, response);
 			} else if (operation.equalsIgnoreCase("delete")) {
-				// Item itemToUpdate = appDao.getRow(rowId);
-				// request.setAttribute("itemData", itemToUpdate);
-				// request.getRequestDispatcher("delete.jsp").forward(request,
-				// response);
+				Item itemToDelete = appDao.getRow(rowId);
+				System.out.println("In the servlet");
+				System.out.println(itemToDelete.toString());
+				request.setAttribute("itemData", itemToDelete);
+				request.getRequestDispatcher("deleteItem.jsp").forward(request, response);
 			} else {
 				response.sendRedirect("index.jsp");
 			}
@@ -66,6 +67,28 @@ public class StockHandlerServlet extends HttpServlet {
 			item.setDescription(request.getParameter("description"));
 			item.setQuantity(Long.parseLong(request.getParameter("quantity")));
 			appDao.addStock(item);
+			request.setAttribute("getStockList", "listAdmin");
+			request.getRequestDispatcher("/stockServlet").forward(request, response);
+		}
+
+		if (redirectHandler.equalsIgnoreCase("stockUpdate")) {
+			Item item = new Item();
+			item.setItemId(Long.parseLong(request.getParameter("id")));
+			item.setName(request.getParameter("item"));
+			item.setDescription(request.getParameter("description"));
+			item.setQuantity(Long.parseLong(request.getParameter("quantity")));
+			appDao.updateStock(item);
+			request.setAttribute("getStockList", "listAdmin");
+			request.getRequestDispatcher("/stockServlet").forward(request, response);
+		}
+
+		if (redirectHandler.equalsIgnoreCase("stockDelete")) {
+			Item item = new Item();
+			item.setItemId(Long.parseLong(request.getParameter("id")));
+			item.setName(request.getParameter("item"));
+			item.setDescription(request.getParameter("description"));
+			item.setQuantity(Long.parseLong(request.getParameter("quantity")));
+			appDao.deleteStock(item);
 			request.setAttribute("getStockList", "listAdmin");
 			request.getRequestDispatcher("/stockServlet").forward(request, response);
 		}

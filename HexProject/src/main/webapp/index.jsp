@@ -18,7 +18,7 @@
 				for (Item items : stockList) {
 			%>
 			<tr>
-				<td><input type="radio" name="itemId"
+				<td><input type="radio" required='true' name="itemId"
 					value="<%=items.getItemId()%>" /></td>
 				<td><%=items.getName()%></td>
 				<td><%=items.getDescription()%></td>

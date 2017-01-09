@@ -1,23 +1,46 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="login.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-<body style="background-color:powderblue;">
-<header>
-	<h1 align="center">
-		<font color="blue">WELCOME TO DBA HOMEPAGE</font>
-	</h1>
-</header>
-<form action = "userServlet" method = "post" >
-<center>
-<table style= "width:50%">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            
+          </button>
+          <a class="navbar-brand" href="#">Hexa Store</a>
+          <form action="Login.jsp" class="navbar-form navbar-right">
+    		<input class="btn btn-success" type="submit" value="Sign Off" />
+		  </form>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome</h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <form>
+		
+		<div class="table-responsive">
+		<table class="table">
 <tr><td>
  User Name*: </td><td><input type="text" name="userName" required/></td></tr>
 <tr><td>
@@ -31,12 +54,18 @@ Role: </td><td><select name="roleId">
  <option value="admin">User Administrators</option>
  <option value="users">Users</option>
  </select></td></tr>
-</table><p></p>
-<input type="hidden" name="adminRequest" value="adminAdd"/>
-<input type="submit" value="Register"/> 
-<button type="reset" value="Cancel">Cancel</button></p>
-		</center>
-</center>
-</form>
-</body>
+		</table>
+	<input class="btn btn-primary btn-sm" type="hidden" name="adminRequest" value="adminAdd"/>
+	<input class="btn btn-primary btn-sm" type="submit" value="Register"/> 
+	<button class="btn btn-primary btn-sm" type="reset" value="Cancel">Cancel</button></p>
+		</div>
+		
+	</form>
+      <hr>
+
+      <footer>
+        <p>&copy; 2017 Company, Inc.</p>
+      </footer>
+    </div> <!-- /container -->
+  </body>
 </html>

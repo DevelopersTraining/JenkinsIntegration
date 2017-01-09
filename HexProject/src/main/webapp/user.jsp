@@ -13,12 +13,12 @@
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            
           </button>
           <a class="navbar-brand" href="#">Hexa Store</a>
+          <form action="Login.jsp" class="navbar-form navbar-right">
+    		<input class="btn btn-success" type="submit" value="Sign Off" />
+		  </form>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           
@@ -35,7 +35,7 @@
 
     <div class="container">
       <!-- Example row of columns -->
-      <form action="StockHandlerServlet" method="post">
+      <form>
 		
 		<div class="table-responsive">
 		<table class="table">
@@ -59,10 +59,7 @@
 <% }%>
 		</table>
 		</div>
-		<input class="btn btn-primary btn-sm" type="submit" name="stockButton" value="add" />
-		<input class="btn btn-primary btn-sm" type="submit" name="stockButton" value="update"/>
-		<input class="btn btn-primary btn-sm" type="submit" name="stockButton" value="delete"/>
-		<input class="btn btn-primary btn-sm" type="hidden" name="stockHandler" value=stockEdit>
+		
 	</form>
       <hr>
 

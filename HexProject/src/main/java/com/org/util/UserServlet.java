@@ -35,7 +35,7 @@ public class UserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String responseURL = "/dba.jsp";
+		String responseURL = "/DBadminist.jsp";
 		ArrayList<User> listUser = new ArrayList();
 		User someUser = null;
 
@@ -44,16 +44,32 @@ public class UserServlet extends HttpServlet {
 			String requestType = "";
 
 			// Validate the request
-			if (request.getAttribute("requestType") != null) {
-				requestType = request.getParameter("requestType").toString();
+			if (request.getParameter("adminRequest") != null) {
+				System.out.println("Admin Request type is"+request.getParameter("adminRequest").toString());
+				requestType = request.getParameter("adminRequest").toString();
 			}
-
-			if (requestType.equalsIgnoreCase("addUser")) {
+			/*if(requestType.equalsIgnoreCase("addUser"))
+			{
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/UserAdminRegistration.jsp");
+				dispatcher.forward(request, response);
+				//response.sendRedirect("/UserAdminRegistration.jsp");
+			}*/
+			if (requestType.equalsIgnoreCase("adminAdd")) {
+				System.out.println("Inside Admin Add");
 				someUser = new User();
 				someUser.setUserName(request.getParameter("userName").toString());
-				Long roleId = Long.valueOf(request.getParameter("roleId").toString());
+				Long roleId=0L;
+				if(request.getParameter("roleId").toString().equalsIgnoreCase("admin"))
+				{
+					roleId=1L;
+				}
+				else if(request.getParameter("roleId").toString().equalsIgnoreCase("users"))
+				{
+					roleId=2L;
+				}
 				someUser.setRoleId(roleId);
 				someUser.setUserPassword(request.getParameter("password"));
+				userDao.addUser(someUser);
 
 				request.setAttribute("addUserOk", "An user was added!");
 

@@ -7,19 +7,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <style>
-form {
+/*form {
 	position: fixed;
 	top: 40%;
 	left: 50%;
-}
+}*/
 </style>
 </head>
 <body style="background-color: powderblue;">
-	<header>
-	<h1 align="center">
+	<h1>
 		<font color="blue">ADMIN ADD STOCK PAGE</font>
 	</h1>
-	</header>
 
 	<form action="StockHandlerServlet" method="post">
 		<center>

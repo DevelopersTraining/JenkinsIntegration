@@ -2,6 +2,7 @@ package com.org.dao;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -45,11 +46,12 @@ public class UserDao implements UserDaoInterface {
 			user.setRole(role);
 			user.setPassword(newUser.getUserPassword());
 			user.setUserName(newUser.getUserName());
-			//user.setRegDate(newUser.getRegDate());
+			user.setRegDate(new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
 
 			session.persist(user);
 
 			session.getTransaction().commit();
+			session.close();
 
 		} catch (Exception e) {
 			System.out.println("Failed to add new User" + e.getMessage());

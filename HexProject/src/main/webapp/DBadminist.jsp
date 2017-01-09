@@ -25,26 +25,7 @@ tr:nth-child(even) {
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-<!--  <SCRIPT language="javascript">
-	function add(type) {
 
-		//Create an input type dynamically.
-		var element = document.createElement("input");
-
-		//Assign different attributes to the element.
-		element.setAttribute("type", type);
-		element.setAttribute("value", type);
-		element.setAttribute("name", type);
-
-		var foo = document.getElementById("fooBar");
-
-		//Append the element in page (in span).
-		foo.appendChild(element);
-
-	}
-</SCRIPT>
--->
 </head>
 <body>
 <body style="background-color:powderblue;">
@@ -64,7 +45,7 @@ tr:nth-child(even) {
 	ArrayList<User> stockList= (ArrayList<User>) request.getAttribute("userList");
 	System.out.println(stockList);
     for(User users:stockList){
-        %>
+ %>
         <tr>
         <td><input type="radio" name="userId"   value="<%=users.getUserId()%>"/></td>
         <td > <%= users.getUserName() %> </td>
@@ -74,22 +55,12 @@ tr:nth-child(even) {
 </table>
  
 <BR/>
-<!--<SELECT name="element">
-	<OPTION value="button">Button</OPTION>
-	<OPTION value="text">Textbox</OPTION>
-	<OPTION value="radio">Radio</OPTION>
-</SELECT>
-<input type="hidden" value="deleteUser" name="requestType"> 
-<INPUT type="button" value="Add" onclick="UserAdminRegistration.jsp"/>-->
-<input type="submit" value="Delete" name="Delete User">
-<span id="fooBar">&nbsp;</span>
-
+<input type="submit" name= "adminRequest" value="DeleteUser"/>
 </FORM>
-  </center>
-</header>
-</table>
-<p></p>
-<input type="submit" value="Add User"/> 
-<button type="reset" value="Cancel">Delete User</button></p>
+<br>
+<FORM action="UserAdminRegistration.jsp" >
+<input type="submit" value="AddUser"/> 
+</FORM>
+
 </body>
 </html>

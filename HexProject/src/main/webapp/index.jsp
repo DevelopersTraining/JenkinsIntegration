@@ -1,4 +1,3 @@
-
 <%@ page
 	import="java.io.*,java.util.ArrayList,com.org.bean.Item,java.util.Iterator"%>
 <html>

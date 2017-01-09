@@ -37,7 +37,7 @@
 
     <div class="container">
       <!-- Example row of columns -->
-      <form>
+      <form action="userServlet" method="post">
 		
 		<div class="table-responsive">
 		<table class="table">
@@ -51,8 +51,8 @@ Registration Date*:</td><td>
 </td></tr> -->
 <tr><td>
 Role: </td><td><select name="roleId">
- <option value="admin">User Administrators</option>
- <option value="users">Users</option>
+ <option value="admin">Administrator</option>
+ <option value="users">Authenticated Users</option>
  </select></td></tr>
 		</table>
 	<input class="btn btn-primary btn-sm" type="hidden" name="adminRequest" value="adminAdd"/>

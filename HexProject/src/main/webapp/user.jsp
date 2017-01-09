@@ -3,10 +3,22 @@
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="login.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.jqueryui.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
+
+<script>
+$(document).ready(function() {
+    $('#example').DataTable( {
+        "pagingType": "full_numbers"
+    } );
+} );
+</script>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -38,24 +50,28 @@
       <form>
 		
 		<div class="table-responsive">
-		<table class="table">
+		<table class="table" id="example">
+		<thead>
 			<tr>
 <th>Id</th>
 <th>Name</th>
 <th>Description </th>
 <th>Quantity </th>
 </tr>
+</thead>
 <%  
 	ArrayList<Item> stockList= (ArrayList<Item>) request.getAttribute("stockList");
 	System.out.println(stockList);
     for(Item items:stockList){
         %>
+        <tbody>
         <tr>
         <td> <%=items.getItemId()%> </td>
         <td > <%= items.getName() %> </td>
         <td > <%=items.getDescription()%> </td>
         <td > <%=items.getQuantity()%> </td>
         </tr>
+        </tbody>
 <% }%>
 		</table>
 		</div>

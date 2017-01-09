@@ -37,7 +37,7 @@ public class StockServlet extends HttpServlet {
 		// response.getWriter().append("Served at:
 		// ").append(request.getContextPath());
 
-		String requestType = "";
+		// String requestType = "";
 
 		// Validate the request
 		// if (request.getAttribute("getStockList") != null) {
@@ -48,7 +48,7 @@ public class StockServlet extends HttpServlet {
 		AppGenericDao appDao = new AppGenericDao();
 		List<Item> stockItems = appDao.getRows();
 		request.setAttribute("stockList", stockItems);
-		request.getRequestDispatcher("admin.jsp").forward(request, response);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 
 	}
 

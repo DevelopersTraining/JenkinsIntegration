@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" import="java.util.ArrayList,com.org.bean.Item,java.util.Iterator"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,9 +15,10 @@ form {
 }
 </style>
 <% 
-String  item  = (String) session.getAttribute("item");        
-String  description  = (String) session.getAttribute("description");
-String  quantity  = (String) session.getAttribute("quantity");
+Item item = (Item) session.getAttribute("itemData");
+String  name  = item.getName();        
+String  description  = item.getDescription();
+Long  quantity  = item.getQuantity();
 %>
 </head>
 <body>
@@ -28,12 +29,12 @@ String  quantity  = (String) session.getAttribute("quantity");
 	</h1>
 	</header>
 
-	<form action="StockHandlerServlet" method="post">
+	<form action="stockServlet" method="post">
 		<center>
 			<table style="width: 100%">
 				<tr>
 					<td>Item name:</td>
-					<td><input type="text" name="item" value=<%= item %>/></td>
+					<td><input type="text" name="item" value=<%= name %>/></td>
 				</tr>
 				<tr>
 					<td>Description:</td>
@@ -47,7 +48,7 @@ String  quantity  = (String) session.getAttribute("quantity");
 					<td><input type="text" name="quantity" pattern="[0-9]" value=<%= quantity %>/></td>
 				</tr>
 			</table>
-			<input type="submit" value="Update Item" />
+			<input type="submit" value="updateItem" />
 			<button type="reset" value="Cancel">Clear</button>
 			<input type="hidden" name="stockHandler" value="stockUpdate">
 	</form>

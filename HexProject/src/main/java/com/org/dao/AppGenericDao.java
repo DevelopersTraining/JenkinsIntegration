@@ -128,7 +128,7 @@ public class AppGenericDao {
 	}
 
 	public Item getRow(String id) {
-		int itemId = Integer.parseInt(id);
+		Long itemId = Long.parseLong(id.trim());
 		Item item = new Item();
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction t = session.beginTransaction();
@@ -137,6 +137,7 @@ public class AppGenericDao {
 		item.setName(current.getName());
 		item.setDescription(current.getDescription());
 		item.setQuantity(current.getQuantity());
+		System.out.println(item.toString());
 		return item;
 
 	}

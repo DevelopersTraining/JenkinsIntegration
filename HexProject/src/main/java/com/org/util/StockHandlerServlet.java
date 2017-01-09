@@ -47,10 +47,9 @@ public class StockHandlerServlet extends HttpServlet {
 			if (operation.equalsIgnoreCase("add")) {
 				response.sendRedirect("AdminAddStock.jsp");
 			} else if (operation.equalsIgnoreCase("update")) {
-				// Item itemToUpdate = appDao.getRow(rowId);
-				// request.setAttribute("itemData", itemToUpdate);
-				// request.getRequestDispatcher("update.jsp").forward(request,
-				// response);
+				Item itemToUpdate = appDao.getRow(rowId);
+				request.setAttribute("itemData", itemToUpdate);
+				request.getRequestDispatcher("updateStock.jsp").forward(request, response);
 			} else if (operation.equalsIgnoreCase("delete")) {
 				// Item itemToUpdate = appDao.getRow(rowId);
 				// request.setAttribute("itemData", itemToUpdate);

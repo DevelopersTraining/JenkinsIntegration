@@ -16,8 +16,6 @@ form {
 </style>
 <% 
 Item item = (Item) request.getAttribute("itemData");
-System.out.println("in the jsp page");
-System.out.println(item.toString());
 String  name  = item.getName();        
 String  description  = item.getDescription();
 Long  quantity  = item.getQuantity();
@@ -27,7 +25,7 @@ Long  quantity  = item.getQuantity();
 <body style="background-color: powderblue;">
 	<header>
 	<h1 align="center">
-		<font color="blue">ADMIN UPDATE STOCK PAGE</font>
+		<font color="blue">ADMIN DELETE STOCK PAGE</font>
 	</h1>
 	</header>
 
@@ -36,7 +34,7 @@ Long  quantity  = item.getQuantity();
 			<table style="width: 100%">
 				<tr>
 					<td>Item name:</td>
-					<td><input type="text" required='true' name="item" value=<%= name %>></td>
+					<td><input type="text" name="item" required='true' value=<%= name %>></td>
 				</tr>
 				<tr>
 					<td>Description:</td>
@@ -47,16 +45,15 @@ Long  quantity  = item.getQuantity();
 				</tr>
 				<tr>
 					<td>Quantity:</td>
-					<td>
-						<!-- <input type="text" name="quantity" pattern="[0-9]" value=<%= quantity %>/>  -->
-						<input type="text" required='true' name="quantity" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value=<%= quantity %>>
+					<td><!-- <input type="text" name="quantity" pattern="[0-9]" value=<%= quantity %>/>  -->
+						<input type="text" name="quantity" required='true' onkeypress='return event.charCode >= 48 && event.charCode <= 57' value=<%= quantity %>>
 					</td>
 				</tr>
 			</table>
-			<input type="submit" value="updateItem" />
+			<input type="submit" value="Delete Item" />
 			<button type="reset" value="Cancel">Clear</button>
 			<input type="hidden" name="id" value="<%=item.getItemId()%>">
-			<input type="hidden" name="stockHandler" value="stockUpdate">
+			<input type="hidden" name="stockHandler" value="stockDelete">
 	</form>
 </body>
 </html>

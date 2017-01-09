@@ -37,7 +37,7 @@ public class StockServlet extends HttpServlet {
 		// response.getWriter().append("Served at:
 		// ").append(request.getContextPath());
 
-		String requestType = "";
+		// String requestType = "";
 
 		// Validate the request
 		// if (request.getAttribute("getStockList") != null) {

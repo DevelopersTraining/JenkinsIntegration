@@ -114,6 +114,7 @@ public class AppGenericDao {
 		updated.setQuantity(item.getQuantity());
 		session.merge(updated);
 		t.commit();
+		session.close();
 		System.out.println("After Update" + current);
 
 	}
@@ -125,10 +126,11 @@ public class AppGenericDao {
 		Query query = session.createQuery(deleteQuery);
 		int rows = query.executeUpdate();
 		session.getTransaction().commit();
+		session.close();
 	}
 
 	public Item getRow(String id) {
-		int itemId = Integer.parseInt(id);
+		Long itemId = Long.parseLong(id.trim());
 		Item item = new Item();
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction t = session.beginTransaction();
@@ -137,6 +139,7 @@ public class AppGenericDao {
 		item.setName(current.getName());
 		item.setDescription(current.getDescription());
 		item.setQuantity(current.getQuantity());
+		session.close();
 		return item;
 
 	}

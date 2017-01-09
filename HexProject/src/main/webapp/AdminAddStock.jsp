@@ -32,20 +32,23 @@ form {
 				</tr>
 				<tr>
 					<td>Description:</td>
-					<td><textarea rows="2" cols="16">
-</textarea></td>
+					<td>
+						<textarea name="description" rows="5" cols="20"></textarea>
+					</td>
 				</tr>
-
 				<!-- Description: </td><td><input type="text" name="description" /></td></tr>-->
 				<tr>
 					<td>Quantity:</td>
-					<td><input type="text" name="quantity" pattern="[0-9]+" /></td>
+					<!-- <td><input type="text" name="quantity" pattern="[0-9]+" /></td> -->
+					<td>
+						<input type="text" name="quantity" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
+					</td>
 				</tr>
 			</table>
-			<input type="hidden" name="stock" value="addStock">
 			<p></p>
 			<input type="submit" value="Add Item" />
 			<button type="reset" value="Cancel">Clear</button>
+			<input type="hidden" name="stockHandler" value="stockAdd">
 		</center>
 	</form>
 </body>

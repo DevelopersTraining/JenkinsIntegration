@@ -34,17 +34,7 @@ public class StockServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at:
-		// ").append(request.getContextPath());
 
-		// String requestType = "";
-
-		// Validate the request
-		// if (request.getAttribute("getStockList") != null) {
-		// requestType = request.getParameter("stock").toString();
-		// }
-
-		System.out.println("retrieve from stock");
 		AppGenericDao appDao = new AppGenericDao();
 		List<Item> stockItems = appDao.getRows();
 		request.setAttribute("stockList", stockItems);

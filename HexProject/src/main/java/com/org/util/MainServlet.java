@@ -57,7 +57,6 @@ public class MainServlet extends HttpServlet {
 			} else {
 				String role = isValid.getRoleName();
 				if (role.equalsIgnoreCase("Admin")) {
-					// response.getWriter().append("Admin Logged In");
 					request.setAttribute("getStockList", "listAdmin");
 					request.getRequestDispatcher("/stockServlet").forward(request, response);
 				} else {
@@ -65,12 +64,10 @@ public class MainServlet extends HttpServlet {
 					List<Item> stockItems = appDao.getRows();
 					request.setAttribute("stockList", stockItems);
 					request.getRequestDispatcher("user.jsp").forward(request, response);
-					// response.getWriter().append("User Logged In");
 				}
 			}
 
 		} else {
-			// response.getWriter().append("Failure");
 			request.setAttribute("loginError", "User or Password invalid. Please try again...");
 			request.getRequestDispatcher("Login.jsp").forward(request, response);
 		}

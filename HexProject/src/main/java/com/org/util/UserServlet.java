@@ -45,27 +45,17 @@ public class UserServlet extends HttpServlet {
 
 			// Validate the request
 			if (request.getParameter("adminRequest") != null) {
-				System.out.println("Admin Request type is"+request.getParameter("adminRequest").toString());
+				System.out.println("Admin Request type is" + request.getParameter("adminRequest").toString());
 				requestType = request.getParameter("adminRequest").toString();
 			}
-			/*if(requestType.equalsIgnoreCase("addUser"))
-			{
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/UserAdminRegistration.jsp");
-				dispatcher.forward(request, response);
-				//response.sendRedirect("/UserAdminRegistration.jsp");
-			}*/
 			if (requestType.equalsIgnoreCase("adminAdd")) {
-				System.out.println("Inside Admin Add");
 				someUser = new User();
 				someUser.setUserName(request.getParameter("userName").toString());
-				Long roleId=0L;
-				if(request.getParameter("roleId").toString().equalsIgnoreCase("admin"))
-				{
-					roleId=1L;
-				}
-				else if(request.getParameter("roleId").toString().equalsIgnoreCase("users"))
-				{
-					roleId=2L;
+				Long roleId = 0L;
+				if (request.getParameter("roleId").toString().equalsIgnoreCase("admin")) {
+					roleId = 1L;
+				} else if (request.getParameter("roleId").toString().equalsIgnoreCase("users")) {
+					roleId = 2L;
 				}
 				someUser.setRoleId(roleId);
 				someUser.setUserPassword(request.getParameter("password"));
@@ -79,7 +69,6 @@ public class UserServlet extends HttpServlet {
 				Long userId = Long.valueOf(request.getParameter("userId").toString());
 				someUser.setUserId(userId);
 				userDao.deleteUser(someUser);
-
 				request.setAttribute("deleteUserOk", "The user was deleted!");
 
 			}

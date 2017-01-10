@@ -49,6 +49,8 @@
 						<th>Name</th>
 						<th>Description</th>
 						<th>Quantity</th>
+						<th>Vendor</th>
+						<th>Created Date</th>
 					</tr>
 					<%
 						ArrayList<Item> stockList = (ArrayList<Item>) request.getAttribute("stockList");

@@ -56,7 +56,7 @@
     for(User users:stockList){
  %>
         <tr>
-        <td><input type="radio" name="userId"   value="<%=users.getUserId()%>"/></td>
+        <td><input type="radio" name="userId"  value="<%=users.getUserId()%>" required /></td>
         <td > <%= users.getUserName() %> </td>
         <td > <%=users.getRoleName()%> </td>
         <td> <%=users.getRegDate() %> </td>
@@ -64,12 +64,18 @@
 <% }%>
 		</table>
 		</div>
-		<input class="btn btn-primary btn-sm" type="submit" value="DeleteUser"/>
+		<input class="btn btn-primary btn-sm" type="submit"  value="DeleteUser" />
 		</FORM>
 		<br>
 <FORM action="UserAdminRegistration.jsp" >
 <input class="btn btn-primary btn-sm" type="submit" value="AddUser"/> 
-</FORM>
+</FORM>   <%if(request.getAttribute("selectButton") != null){%>
+                	<span style="color:red; font-size=12px" ><%= request.getAttribute("selectButton").toString() %></span>
+            <%} %> 
+
+
+
+
       <hr>
 
       <footer>

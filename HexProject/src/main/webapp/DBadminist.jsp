@@ -48,6 +48,7 @@
 <th>Id</th>
 <th>Name</th>
 <th>RoleName </th>
+<th>Registration Date </th>
 </tr>
 <%  
 	ArrayList<User> stockList= (ArrayList<User>) request.getAttribute("userList");
@@ -58,6 +59,7 @@
         <td><input type="radio" name="userId"   value="<%=users.getUserId()%>"/></td>
         <td > <%= users.getUserName() %> </td>
         <td > <%=users.getRoleName()%> </td>
+        <td> <%=users.getRegDate() %> </td>
         </tr>
 <% }%>
 		</table>

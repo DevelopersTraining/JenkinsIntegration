@@ -8,7 +8,7 @@ public interface UserDaoInterface {
 
 	boolean addUser(User newUser);
 
-	boolean deleteUser(User deleteUser);
+	boolean deleteUser(Long userId);
 	
 	ArrayList<User> getUserList();
 

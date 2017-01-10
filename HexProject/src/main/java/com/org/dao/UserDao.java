@@ -7,10 +7,12 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Service;
 
 import com.org.bean.User;
 import com.org.pojo.AppUser;
+import com.org.pojo.DbaUser;
 import com.org.pojo.Role;
 import com.org.util.HibernateUtil;
 
@@ -69,13 +71,13 @@ public class UserDao implements UserDaoInterface {
 	 * 
 	 * @see com.org.dao.UserDaoInterface#deleteUser(com.org.bean.User)
 	 */
-	public boolean deleteUser(User deleteUser) {
+	public boolean deleteUser(Long userId) {
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
 
 			AppUser user = new AppUser();
-			user.setUserId(deleteUser.getUserId());
+			user.setUserId(userId);
 
 			session.delete(user);
 
@@ -120,6 +122,19 @@ public class UserDao implements UserDaoInterface {
 		}
 
 		return userList;
+	}
+
+	public User getUser(Long userId) {
+		User user=new User();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		AppUser current = (AppUser) session.get(AppUser.class, userId);
+		user.setUserId(current.getUserId());
+		user.setUserName(current.getUserName());
+		user.setUserPassword(current.getPassword());
+		user.setRoleName(current.getRole().getRoleName());
+		session.close();
+		return user;
 	}
 
 }

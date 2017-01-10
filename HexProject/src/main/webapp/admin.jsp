@@ -70,14 +70,11 @@
 						}
 					%>
 				</table>
-				<input class="btn btn-primary btn-sm" type="submit"
-					name="stockButton" value="update" /> <input
-					class="btn btn-primary btn-sm" type="submit" name="stockButton"
-					value="delete" /> <input class="btn btn-primary btn-sm"
-					type="hidden" name="stockHandler" value=stockEdit> <input
-					class="btn btn-primary btn-sm" type="submit" name="stockButton"
-					value="add" /> <input class="btn btn-primary btn-sm" type="hidden"
-					name="stockHandler" value=stockEdit>
+				<input class="btn btn-primary btn-sm" type="submit"	name="stockButton" value="update" />
+				<input class="btn btn-primary btn-sm" type="submit" name="stockButton" value="delete" />
+				<input class="btn btn-primary btn-sm" type="hidden" name="stockHandler" value=stockEdit>
+				<input class="btn btn-primary btn-sm" type="submit" name="stockButton" value="add" />
+				<input class="btn btn-primary btn-sm" type="hidden" name="stockHandler" value=stockEdit>
 			</div>
 		</form>
 

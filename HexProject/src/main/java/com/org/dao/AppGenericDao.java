@@ -86,7 +86,7 @@ public class AppGenericDao {
 
 	public void addStock(Item item) {
 		System.out.println("Starting:: addStock");
-
+		
 		try {
 
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -97,24 +97,33 @@ public class AppGenericDao {
 			st.setQuantity(item.getQuantity());
 			st.setVendor(item.getVendor());
 			st.setCreationDate(new Date(Calendar.getInstance().getTime().getTime()));
-			session.persist(st);
+			Long itemId= (Long)session.save(st);
 			t.commit();
 			session.close();
 			System.out.println("successfully saved");
-
+			
+			Item it=getRow(""+itemId);	
+			
+			System.out.println("After insert, copying the current Item to History set flag to 0");
+			it.setCreationDate(new Date(Calendar.getInstance().getTime().getTime()));
+			addHistoryItem(it, 0);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 
 	}
 
 	public void addHistoryItem(Item item, int flag) {
+		try
+		{
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction t = session.beginTransaction();
 
 		Stock current = (Stock) session.get(Stock.class, item.getItemId());
 
-		System.out.println("Before Update, copying the current Item to History");
+		System.out.println("Copying the current Item to History");
 		HistoryStock history = new HistoryStock();
 
 		history.setItemId(current.getItemId());
@@ -122,21 +131,24 @@ public class AppGenericDao {
 		history.setName(current.getName());
 		history.setQuantity(current.getQuantity());
 		history.setVendor(current.getVendor());
-		history.setCreationDate(current.getCreationDate());
+		history.setCreationDate(item.getCreationDate());
 		history.setFlag(new Integer(flag));
 
 		session.saveOrUpdate(history);
-		session.getTransaction().commit();
+		t.commit();
 
 		session.close();
 		System.out.println("After Update");
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	public void updateStock(Item item) {
 
-		System.out.println("Before Update, copying the current Item to History");
-
-		addHistoryItem(item, 1);
+		
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction t = session.beginTransaction();
@@ -150,23 +162,30 @@ public class AppGenericDao {
 		updated.setName(item.getName());
 		updated.setQuantity(item.getQuantity());
 		updated.setVendor(item.getVendor());
-		updated.setCreationDate(new Date(Calendar.getInstance().getTime().getTime()));
+		updated.setCreationDate(item.getCreationDate());
 		session.merge(updated);
-
 		t.commit();
 		session.close();
+		System.out.println("After Update, copying the current Item to History set flag to 1");
+		item.setCreationDate(new Date(Calendar.getInstance().getTime().getTime()));
+		addHistoryItem(item, 1);
 		System.out.println("After Update" + current);
 
 	}
 
 	public void deleteStock(Item item) {
+		System.out.println("After delete, copying the current Item to History set flag to 2");
+		item.setCreationDate(new Date(Calendar.getInstance().getTime().getTime()));
+		addHistoryItem(item, 2);
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
+		Transaction t=session.beginTransaction();
+		
 		String deleteQuery = "DELETE Stock WHERE itemId = " + item.getItemId();
 		Query query = session.createQuery(deleteQuery);
 		int rows = query.executeUpdate();
-		session.getTransaction().commit();
+		t.commit();
 		session.close();
+		
 	}
 
 	public Item getRow(String id) {
@@ -179,6 +198,9 @@ public class AppGenericDao {
 		item.setName(current.getName());
 		item.setDescription(current.getDescription());
 		item.setQuantity(current.getQuantity());
+		item.setCreationDate(current.getCreationDate());
+		item.setVendor(current.getVendor());
+		t.commit();
 		session.close();
 		return item;
 

@@ -44,9 +44,11 @@ public class UserServlet extends HttpServlet {
 			String requestType = "";
 
 			// Validate the request
-			if (request.getParameter("adminRequest") != null) {
+			if (request.getParameter("DbaRequest") != null) {
 				System.out.println("Admin Request type is" + request.getParameter("adminRequest").toString());
-				requestType = request.getParameter("adminRequest").toString();
+				requestType = request.getParameter("DbaRequest").toString();
+				System.out.println(requestType);
+				System.out.println(request.getParameter("delete"));
 			}
 			if (requestType.equalsIgnoreCase("adminAdd")) {
 				someUser = new User();
@@ -63,14 +65,25 @@ public class UserServlet extends HttpServlet {
 
 				request.setAttribute("addUserOk", "An user was added!");
 
-			} else if (requestType.equalsIgnoreCase("deleteUser")) {
+			} /*else if (requestType.equalsIgnoreCase("deleteUser")) {
 
-				someUser = new User();
 				Long userId = Long.valueOf(request.getParameter("userId").toString());
-				someUser.setUserId(userId);
-				userDao.deleteUser(someUser);
-				request.setAttribute("deleteUserOk", "The user was deleted!");
+				User user=userDao.getUser(userId);
+				request.setAttribute("userData", user);
+				request.getRequestDispatcher("deleteUser.jsp").forward(request, response);
+				//someUser.setUserId(userId);
+				//userDao.deleteUser(userId);
+				//request.setAttribute("deleteUserOk", "The user was deleted!");
 
+			}*/
+			else if(requestType.equalsIgnoreCase("deleteUser"))
+			{
+				if(request.getParameter("delete").equalsIgnoreCase("delete"))
+				{
+				System.out.println("inside delete");
+				userDao.deleteUser(Long.parseLong(request.getParameter("id")));
+				request.setAttribute("DeleteUserOK", "An user was Deleted!");
+				}
 			}
 
 			userDao = new UserDao();

@@ -1,9 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>   
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ page import="java.io.*,java.util.ArrayList,com.org.bean.User,java.util.Iterator"%> 
 
+<!-- <style> -->
+/* form { */
+/* 	position: fixed; */
+/* 	top: 40%; */
+/* 	left: 50%; */
+/* 	margin-top: -50px; */
+/* 	margin-left: -100px; */
+/* } */
+<!-- </style> -->
 
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" import="java.io.*,com.org.bean.User,com.org.dao.UserDao"%>
 <html>
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -12,6 +19,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
+<% 
+Long userId = Long.valueOf(request.getParameter("userId").toString());
+User user= new UserDao().getUser(userId);
+String  name  = user.getUserName();        
+String  password  = user.getUserPassword();
+String  role  = user.getRoleName();
+%>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -34,42 +48,36 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Admin Add Stock Page</h1>
+        <h1>DBA DELETE USERS PAGE</h1>
       </div>
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
-      <FORM action="deleteUser.jsp">
+      <form action="userServlet" method="post">
 		
 		<div class="table-responsive">
 		<table class="table">
 			<tr>
-<th>Id</th>
-<th>Name</th>
-<th>RoleName </th>
-</tr>
-<%  
-	ArrayList<User> stockList= (ArrayList<User>) request.getAttribute("userList");
-	System.out.println(stockList);
-    for(User users:stockList){
- %>
-        <tr>
-        <td><input type="radio" name="userId"   value="<%=users.getUserId()%>"/></td>
-        <td > <%= users.getUserName() %> </td>
-        <td > <%=users.getRoleName()%> </td>
-        </tr>
-<% }%>
+					<td>UserName:</td>
+					<td><%= name %></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><%= password %></td>
+				</tr>
+				<tr>
+					<td>Role:</td>
+					<td><%= role %></td>
+				</tr>
 		</table>
 		</div>
-		<input class="btn btn-primary btn-sm" type="submit" value="DeleteUser"/>
-		</FORM>
-		<br>
-<FORM action="UserAdminRegistration.jsp" >
-<input class="btn btn-primary btn-sm" type="submit" value="AddUser"/> 
-</FORM>
+			<input  class="btn btn-primary btn-sm"type="submit" name="delete" value="delete" />
+			<input class="btn btn-primary btn-sm" type="submit" name="delete" value="cancel"/>
+			<input class="btn btn-primary btn-sm" type="hidden" name="id" value="<%=userId%>">			
+			<input  class="btn btn-primary btn-sm" type="hidden" name="DbaRequest" value="deleteUser">		
+	</form>
       <hr>
-
       <footer>
         <p>&copy; 2017 Company, Inc.</p>
       </footer>

@@ -36,8 +36,8 @@ public class UserDaoTest {
 	@Test
 	public void deleteUser() {
 		User user = new User();
-		user.setUserId(19l);
-		userDaoTest.deleteUser(user);
+		//user.setUserId(19l);
+		userDaoTest.deleteUser(1L);
 	}
 	
 	@Test

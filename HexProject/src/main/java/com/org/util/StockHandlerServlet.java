@@ -78,6 +78,7 @@ public class StockHandlerServlet extends HttpServlet {
 			item.setName(request.getParameter("item"));
 			item.setDescription(request.getParameter("description"));
 			item.setQuantity(Long.parseLong(request.getParameter("quantity")));
+			item.setVendor(request.getParameter("vendor"));
 			appDao.updateStock(item);
 			request.setAttribute("getStockList", "listAdmin");
 			request.getRequestDispatcher("/stockServlet").forward(request, response);
@@ -87,9 +88,6 @@ public class StockHandlerServlet extends HttpServlet {
 			if (request.getParameter("delete").equalsIgnoreCase("delete")) {
 				Item item = new Item();
 				item.setItemId(Long.parseLong(request.getParameter("id")));
-				item.setName(request.getParameter("item"));
-				item.setDescription(request.getParameter("description"));
-				item.setQuantity(Long.parseLong(request.getParameter("quantity")));
 				appDao.deleteStock(item);
 				request.setAttribute("getStockList", "listAdmin");
 				request.getRequestDispatcher("/stockServlet").forward(request, response);

@@ -117,6 +117,8 @@ public class AppGenericDao {
 		updated.setDescription(item.getDescription());
 		updated.setName(item.getName());
 		updated.setQuantity(item.getQuantity());
+		updated.setVendor(item.getVendor());
+		updated.setCreationDate(new Date(Calendar.getInstance().getTime().getTime()));
 		session.merge(updated);
 		t.commit();
 		session.close();

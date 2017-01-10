@@ -61,6 +61,8 @@
 						<td><%=items.getName()%></td>
 						<td><%=items.getDescription()%></td>
 						<td><%=items.getQuantity()%></td>
+						<td><%=items.getVendor()%></td>
+						<td><%=items.getCreationDate() %></td>
 					</tr>
 					<%
 						}

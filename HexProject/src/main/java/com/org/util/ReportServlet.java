@@ -30,7 +30,22 @@ public class ReportServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		String type = (String) request.getParameter("reportType");
+		String startDate = (String) request.getParameter("startDate");
+		String endDate = (String) request.getParameter("endDate");
+
+		if (type.equalsIgnoreCase("new")) {
+
+		} else if (type.equalsIgnoreCase("deleted")) {
+
+		} else if (type.equalsIgnoreCase("updated")) {
+
+		}
+		request.setAttribute("reportType", type);
+		request.setAttribute("startDate", startDate);
+		request.setAttribute("endDate", endDate);
+		request.getRequestDispatcher("ItemReport.jsp").forward(request, response);
 	}
 
 	/**

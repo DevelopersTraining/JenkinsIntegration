@@ -10,21 +10,20 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Service;
 
-import com.org.bean.Item;
 import com.org.bean.User;
 import com.org.pojo.AppUser;
 import com.org.pojo.DbaUser;
 import com.org.pojo.Role;
-import com.org.pojo.Stock;
 import com.org.util.HibernateUtil;
-
 
 @Service
 public class UserDao implements UserDaoInterface {
 
 	private Session session = null;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.org.dao.UserDaoInterface#addUser(com.org.bean.User)
 	 */
 	public boolean addUser(User newUser) {
@@ -48,7 +47,7 @@ public class UserDao implements UserDaoInterface {
 			user.setRole(role);
 			user.setPassword(newUser.getUserPassword());
 			user.setUserName(newUser.getUserName());
-			user.setRegDate(new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
+			user.setRegDate(new Date(Calendar.getInstance().getTime().getTime()));
 
 			session.persist(user);
 
@@ -67,7 +66,9 @@ public class UserDao implements UserDaoInterface {
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.org.dao.UserDaoInterface#deleteUser(com.org.bean.User)
 	 */
 	public boolean deleteUser(Long userId) {
@@ -95,12 +96,11 @@ public class UserDao implements UserDaoInterface {
 
 	public ArrayList<User> getUserList() {
 		ArrayList<User> userList = new ArrayList<User>();
-		
+
 		try {
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
-				
-			
+
 			// Get user from AppUser
 			String hql = "FROM AppUser";
 			Query query = session.createQuery(hql);
@@ -110,15 +110,17 @@ public class UserDao implements UserDaoInterface {
 
 			for (AppUser us : results) {
 				System.out.println(us.toString());
-				//(Long userId, Long roleId, String roleName, String userName, String userPassword, Date regDate){
-				userList.add(new User(us.getUserId(), us.getRole().getRoleId(), us.getRole().getRoleName(), us.getUserName(),us.getPassword(), us.getRegDate()));
+				// (Long userId, Long roleId, String roleName, String userName,
+				// String userPassword, Date regDate){
+				userList.add(new User(us.getUserId(), us.getRole().getRoleId(), us.getRole().getRoleName(),
+						us.getUserName(), us.getPassword(), us.getRegDate()));
 			}
 			session.getTransaction().commit();
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		return userList;
 	}
 

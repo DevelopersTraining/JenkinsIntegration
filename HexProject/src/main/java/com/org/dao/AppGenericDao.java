@@ -1,6 +1,8 @@
 package com.org.dao;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -11,6 +13,7 @@ import org.hibernate.criterion.Restrictions;
 
 import com.org.bean.Item;
 import com.org.pojo.AppUser;
+import com.org.pojo.History_Stock;
 import com.org.pojo.Stock;
 import com.org.util.HibernateUtil;
 
@@ -34,7 +37,8 @@ public class AppGenericDao {
 
 			for (Stock item : results) {
 				System.out.println(item.toString());
-				items.add(new Item(item.getItemId(), item.getName(), item.getDescription(), item.getQuantity()));
+				items.add(new Item(item.getItemId(), item.getName(), item.getDescription(), item.getQuantity(),
+						item.getCreationDate(), item.getVendor()));
 			}
 			session.getTransaction().commit();
 		} catch (Exception e) {
@@ -91,6 +95,8 @@ public class AppGenericDao {
 			st.setName(item.getName());
 			st.setDescription(item.getDescription());
 			st.setQuantity(item.getQuantity());
+			st.setVendor(item.getVendor());
+			st.setCreationDate(new Date(Calendar.getInstance().getTime().getTime()));
 			session.persist(st);
 			t.commit();
 			session.close();
@@ -101,18 +107,52 @@ public class AppGenericDao {
 		}
 
 	}
+	
+	public void addHistoryItem(Item item, int flag){
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction t = session.beginTransaction();
+		
+		System.out.println("Before Update, copying the current Item to History");
+		History_Stock history = new History_Stock();
+		
+		history.setItemId(item.getItemId());
+		history.setDescription(item.getDescription());
+		history.setName(item.getName());
+		history.setQuantity(item.getQuantity());
+		history.setVendor(item.getVendor());
+		history.setCreationDate(new Date(Calendar.getInstance().getTime().getTime()));
+		history.setFlag(new Integer(flag));
+		
+		session.saveOrUpdate(history);
+		session.getTransaction().commit();
+		
+		session.close();
+		System.out.println("After Update");
+	}
 
 	public void updateStock(Item item) {
+		
+
+		System.out.println("Before Update, copying the current Item to History");
+		
+		addHistoryItem(item, 1);
+		
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction t = session.beginTransaction();
 		Stock current = (Stock) session.get(Stock.class, item.getItemId());
+		
 		System.out.println("Before Update" + current);
+		
 		Stock updated = new Stock();
 		updated.setItemId(item.getItemId());
 		updated.setDescription(item.getDescription());
 		updated.setName(item.getName());
 		updated.setQuantity(item.getQuantity());
+		updated.setVendor(item.getVendor());
+		updated.setCreationDate(new Date(Calendar.getInstance().getTime().getTime()));
 		session.merge(updated);
+			
+		
 		t.commit();
 		session.close();
 		System.out.println("After Update" + current);

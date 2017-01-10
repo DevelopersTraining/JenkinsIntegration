@@ -10,7 +10,7 @@
 <!-- </style> -->
 
  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="java.io.*,com.org.bean.Item"%>
+	pageEncoding="ISO-8859-1" import="java.io.*,com.org.bean.Item,java.sql.Date;"%>
 <html>
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -24,6 +24,8 @@ Item item = (Item) request.getAttribute("itemData");
 String  name  = item.getName();        
 String  description  = item.getDescription();
 Long  quantity  = item.getQuantity();
+String vendor = item.getVendor();
+Date creationDate = item.getCreationDate();
 %>
 </head>
 <body>
@@ -69,14 +71,19 @@ Long  quantity  = item.getQuantity();
 					<td>Quantity:</td>
 					<td><%= quantity %></td>
 				</tr>
+				<tr>
+					<td>Vendor:</td>
+					<td><%= vendor %></td>
+				</tr>
+				<tr>
+					<td>Creation Date:</td>
+					<td><%= creationDate %></td>
+				</tr>
 		</table>
 		</div>
 			<input  class="btn btn-primary btn-sm"type="submit" name="delete" value="delete" />
 			<input class="btn btn-primary btn-sm" type="submit" name="delete" value="cancel"/>
 			<input class="btn btn-primary btn-sm" type="hidden" name="id" value="<%=item.getItemId()%>">
-			<input class="btn btn-primary btn-sm" type="hidden" name="item" value="<%=item.getName()%>">
-			<input class="btn btn-primary btn-sm" type="hidden" name="description" value="<%=item.getDescription()%>">
-			<input class="btn btn-primary btn-sm" type="hidden" name="quantity" value="<%=item.getQuantity()%>">
 			<input  class="btn btn-primary btn-sm" type="hidden" name="stockHandler" value="stockDelete">		
 	</form>
       <hr>

@@ -57,6 +57,10 @@
 						onkeypress='return event.charCode >= 48 && event.charCode <= 57'required='true'></input>
 					</td>
 				</tr>
+				<tr>
+					<td>Item Vendor:</td>
+					<td><input type="text" name="vendor" required='true'/></td>
+				</tr>
 		</table>
 		</div>
 			<input class="btn btn-primary btn-sm" type="submit" value="Add Item" />

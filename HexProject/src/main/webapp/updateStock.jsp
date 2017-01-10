@@ -21,6 +21,7 @@ System.out.println(item.toString());
 String  name  = item.getName();        
 String  description  = item.getDescription();
 Long  quantity  = item.getQuantity();
+String vendor = item.getVendor();
 %>
 </head>
 <body>
@@ -50,6 +51,12 @@ Long  quantity  = item.getQuantity();
 					<td>
 						<!-- <input type="text" name="quantity" pattern="[0-9]" value=<%= quantity %>/>  -->
 						<input type="text" required='true' name="quantity" onkeypress='return event.charCode >= 48 && event.charCode <= 57' value=<%= quantity %>>
+					</td>
+				</tr>
+				<tr>
+					<td>Vendor:</td>
+					<td>
+						<input type="text" required='true' name="vendor" value=<%= vendor %>>
 					</td>
 				</tr>
 			</table>

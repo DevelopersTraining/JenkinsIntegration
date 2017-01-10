@@ -4,20 +4,25 @@
 	import="java.io.*,java.util.ArrayList,com.org.bean.Item,java.util.Iterator"%>
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
 <title>Insert title here</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
 
 <script type="text/javascript">
-$(document).ready(function(){
-    $('#example').DataTable({
-    	"order":[[2,"desc"]]
-    });
-});
+	$(document).ready(function() {
+		$('#example').DataTable({
+			"order" : [ [ 2, "desc" ] ]
+		});
+	});
 </script>
 <title>Insert title here</title>
 </head>
@@ -52,41 +57,47 @@ $(document).ready(function(){
 			<div class="table-responsive">
 				<table class="table display" id="example">
 					<thead>
-					<tr>
-						<th>Id</th>
-						<th>Name</th>
-						<th>Description</th>
-						<th>Quantity</th>
-						<th>Vendor</th>
-						<th>Created at</th>
-					</tr>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Quantity</th>
+							<th>Vendor</th>
+							<th>Created at</th>
+						</tr>
 					</thead>
 					<tbody>
-					<%
-						ArrayList<Item> stockList = (ArrayList<Item>) request.getAttribute("stockList");
-						System.out.println(stockList);
-						for (Item items : stockList) {
-					%>
-					<tr>
-						<td><input type="radio" name="itemId"
-							value="<%=items.getItemId()%>" /></td>
-						<td><%=items.getName()%></td>
-						<td><%=items.getDescription()%></td>
-						<td><%=items.getQuantity()%></td>
-						<td><%=items.getVendor()%></td>
-						<td><%=items.getCreationDate() %></td>
-					</tr>
-					<%
-						}
-					%>
+						<%
+							ArrayList<Item> stockList = (ArrayList<Item>) request.getAttribute("stockList");
+							System.out.println(stockList);
+							for (Item items : stockList) {
+						%>
+						<tr>
+							<td><input type="radio" name="itemId"
+								value="<%=items.getItemId()%>" required /></td>
+							<td><%=items.getName()%></td>
+							<td><%=items.getDescription()%></td>
+							<td><%=items.getQuantity()%></td>
+							<td><%=items.getVendor()%></td>
+							<td><%=items.getCreationDate()%></td>
+						</tr>
+						<%
+							}
+						%>
 					</tbody>
 				</table>
-				<input class="btn btn-primary btn-sm" type="submit"	name="stockButton" value="update" />
-				<input class="btn btn-primary btn-sm" type="submit" name="stockButton" value="delete" />
-				<input class="btn btn-primary btn-sm" type="hidden" name="stockHandler" value=stockEdit>
-				<input class="btn btn-primary btn-sm" type="submit" name="stockButton" value="add" />
-				<input class="btn btn-primary btn-sm" type="hidden" name="stockHandler" value=stockEdit>
+				<input class="btn btn-primary btn-sm" type="submit"
+					name="stockButton" value="update" /> <br></br> <input
+					class="btn btn-primary btn-sm" type="submit" name="stockButton"
+					value="delete" /> <input class="btn btn-primary btn-sm"
+					type="hidden" name="stockHandler" value=stockEdit>
 			</div>
+		</form>
+		<form action="StockHandlerServlet" method="post">
+			<input class="btn btn-primary btn-sm" type="hidden"
+				name="stockHandler" value=stockEdit> <input
+				class="btn btn-primary btn-sm" type="submit" name="stockButton"
+				value="add" />
 		</form>
 
 		<hr>

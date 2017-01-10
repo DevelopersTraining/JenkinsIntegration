@@ -200,9 +200,10 @@
 	    			method: "POST",
 	    			context: document.body,
 	    		}).done(function(data) {
+	    			
 	    			$('#container').show();
-	    	       chart.addSeries({
-	    	            name: 'ADBE',
+	    	       	chart.addSeries({
+	    	        	name: 'ADBE',
 	    	            data: data
 	    	        });  
 	    			

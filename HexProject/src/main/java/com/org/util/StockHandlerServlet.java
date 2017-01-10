@@ -66,6 +66,7 @@ public class StockHandlerServlet extends HttpServlet {
 			item.setName(request.getParameter("item"));
 			item.setDescription(request.getParameter("description"));
 			item.setQuantity(Long.parseLong(request.getParameter("quantity")));
+			item.setVendor(request.getParameter("vendor"));
 			appDao.addStock(item);
 			request.setAttribute("getStockList", "listAdmin");
 			request.getRequestDispatcher("/stockServlet").forward(request, response);

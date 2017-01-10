@@ -1,6 +1,8 @@
 package com.org.dao;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -34,7 +36,8 @@ public class AppGenericDao {
 
 			for (Stock item : results) {
 				System.out.println(item.toString());
-				items.add(new Item(item.getItemId(), item.getName(), item.getDescription(), item.getQuantity()));
+				items.add(new Item(item.getItemId(), item.getName(), item.getDescription(), item.getQuantity(),
+						item.getCreationDate(), item.getVendor()));
 			}
 			session.getTransaction().commit();
 		} catch (Exception e) {
@@ -91,6 +94,8 @@ public class AppGenericDao {
 			st.setName(item.getName());
 			st.setDescription(item.getDescription());
 			st.setQuantity(item.getQuantity());
+			st.setVendor(item.getVendor());
+			st.setCreationDate(new Date(Calendar.getInstance().getTime().getTime()));
 			session.persist(st);
 			t.commit();
 			session.close();

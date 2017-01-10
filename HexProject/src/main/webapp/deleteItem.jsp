@@ -1,23 +1,23 @@
 
-<!-- <style> -->
-/* form { */
-/* 	position: fixed; */
-/* 	top: 40%; */
-/* 	left: 50%; */
-/* 	margin-top: -50px; */
-/* 	margin-left: -100px; */
-/* } */
-<!-- </style> -->
-
  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.io.*,com.org.bean.Item,java.sql.Date;"%>
 <html>
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="login.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+<title>Insert title here</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#example').DataTable({
+    	"order":[[2,"desc"]]
+    });
+});
+</script>
 <title>Insert title here</title>
 <% 
 Item item = (Item) request.getAttribute("itemData");
@@ -58,27 +58,25 @@ Date creationDate = item.getCreationDate();
       <form action="StockHandlerServlet" method="post">
 		
 		<div class="table-responsive">
-		<table class="table">
+		<table class="table" id="example">
+		<thead>
+		<tr>
+			<th>Item Name</th>
+			<th>Description</th>
+			<th>Quantity</th>
+			<th>Vendedor</th>
+			<th>Creation Date</th>
+		</tr>
+		</thead>
+		<tbody>
 			<tr>
-					<td>Item name:</td>
-					<td><%= name %></td>
-				</tr>
-				<tr>
-					<td>Description:</td>
-					<td><%= description %></td>
-				</tr>
-				<tr>
-					<td>Quantity:</td>
-					<td><%= quantity %></td>
-				</tr>
-				<tr>
-					<td>Vendor:</td>
-					<td><%= vendor %></td>
-				</tr>
-				<tr>
-					<td>Creation Date:</td>
+					<td><%= name %></td>				
+					<td><%= description %></td>					
+					<td><%= quantity %></td>					
+					<td><%= vendor %></td>					
 					<td><%= creationDate %></td>
-				</tr>
+			</tr>
+		</tbody>
 		</table>
 		</div>
 			<input  class="btn btn-primary btn-sm"type="submit" name="delete" value="delete" />

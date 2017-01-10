@@ -13,7 +13,7 @@ import org.hibernate.criterion.Restrictions;
 
 import com.org.bean.Item;
 import com.org.pojo.AppUser;
-import com.org.pojo.History_Stock;
+import com.org.pojo.HistoryStock;
 import com.org.pojo.Stock;
 import com.org.util.HibernateUtil;
 
@@ -107,42 +107,43 @@ public class AppGenericDao {
 		}
 
 	}
-	
-	public void addHistoryItem(Item item, int flag){
+
+	public void addHistoryItem(Item item, int flag) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction t = session.beginTransaction();
-		
+
+		Stock current = (Stock) session.get(Stock.class, item.getItemId());
+
 		System.out.println("Before Update, copying the current Item to History");
-		History_Stock history = new History_Stock();
-		
-		history.setItemId(item.getItemId());
-		history.setDescription(item.getDescription());
-		history.setName(item.getName());
-		history.setQuantity(item.getQuantity());
-		history.setVendor(item.getVendor());
-		history.setCreationDate(new Date(Calendar.getInstance().getTime().getTime()));
+		HistoryStock history = new HistoryStock();
+
+		history.setItemId(current.getItemId());
+		history.setDescription(current.getDescription());
+		history.setName(current.getName());
+		history.setQuantity(current.getQuantity());
+		history.setVendor(current.getVendor());
+		history.setCreationDate(current.getCreationDate());
 		history.setFlag(new Integer(flag));
-		
+
 		session.saveOrUpdate(history);
 		session.getTransaction().commit();
-		
+
 		session.close();
 		System.out.println("After Update");
 	}
 
 	public void updateStock(Item item) {
-		
 
 		System.out.println("Before Update, copying the current Item to History");
-		
+
 		addHistoryItem(item, 1);
-		
+
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction t = session.beginTransaction();
 		Stock current = (Stock) session.get(Stock.class, item.getItemId());
-		
+
 		System.out.println("Before Update" + current);
-		
+
 		Stock updated = new Stock();
 		updated.setItemId(item.getItemId());
 		updated.setDescription(item.getDescription());
@@ -151,8 +152,7 @@ public class AppGenericDao {
 		updated.setVendor(item.getVendor());
 		updated.setCreationDate(new Date(Calendar.getInstance().getTime().getTime()));
 		session.merge(updated);
-			
-		
+
 		t.commit();
 		session.close();
 		System.out.println("After Update" + current);

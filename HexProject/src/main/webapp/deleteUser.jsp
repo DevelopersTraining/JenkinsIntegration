@@ -20,7 +20,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <% 
-Long userId = Long.valueOf(request.getParameter("userId").toString());
+Long userId = Long.parseLong(request.getParameter("userId"));
 User user= new UserDao().getUser(userId);
 String  name  = user.getUserName();        
 String  password  = user.getUserPassword();
@@ -60,11 +60,11 @@ String  role  = user.getRoleName();
 		<table class="table">
 			<tr>
 					<td>UserName:</td>
-					<td><%= name %></td>
+					<td><%=name%></td>
 				</tr>
 				<tr>
 					<td>Password:</td>
-					<td><%= password %></td>
+					<td><%=password%></td>
 				</tr>
 				<tr>
 					<td>Role:</td>

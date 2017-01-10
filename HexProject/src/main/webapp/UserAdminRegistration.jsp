@@ -55,7 +55,7 @@ Role: </td><td><select name="roleId">
  <option value="users">Authenticated Users</option>
  </select></td></tr>
 		</table>
-	<input class="btn btn-primary btn-sm" type="hidden" name="adminRequest" value="adminAdd"/>
+	<input class="btn btn-primary btn-sm" type="hidden" name="DbaRequest" value="adminAdd"/>
 	<input class="btn btn-primary btn-sm" type="submit" value="Register"/> 
 	<button class="btn btn-primary btn-sm" type="reset" value="Cancel">Cancel</button></p>
 		</div>

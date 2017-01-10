@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+      <div class="">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             
@@ -29,7 +29,7 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-      <div class="container">
+      <div class="">
         <h1>ADMIN ADD STOCK PAGE</h1>
       </div>
     </div>

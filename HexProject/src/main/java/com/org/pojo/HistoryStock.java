@@ -12,12 +12,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "HISTORY_STOCK")
-public class History_Stock implements Serializable {
+public class HistoryStock implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
+	private Long id;
 
 	@Column(name = "ITEM_ID")
 	private Long itemId;
@@ -36,16 +41,16 @@ public class History_Stock implements Serializable {
 
 	@Column(name = "VENDOR")
 	private String vendor;
-	
+
 	@Column(name = "FLAG")
 	private Integer flag;
-	
 
-	public History_Stock() {
+	public HistoryStock() {
 
 	}
 
-	public History_Stock(Long itemId, String name, String description, Long quantity, Date creationDate, String vendor) {
+	public HistoryStock(Long itemId, String name, String description, Long quantity, Date creationDate,
+			String vendor) {
 		this.itemId = itemId;
 		this.name = name;
 		this.description = description;
@@ -116,5 +121,4 @@ public class History_Stock implements Serializable {
 		this.flag = flag;
 	}
 
-	
 }

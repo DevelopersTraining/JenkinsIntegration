@@ -7,6 +7,7 @@ import org.hibernate.service.ServiceRegistry;
 
 import com.org.pojo.AppUser;
 import com.org.pojo.DbaUser;
+import com.org.pojo.HistoryStock;
 import com.org.pojo.Role;
 import com.org.pojo.Stock;
 
@@ -22,6 +23,7 @@ public class HibernateUtil {
 			configuration.addAnnotatedClass(DbaUser.class);
 			configuration.addAnnotatedClass(Role.class);
 			configuration.addAnnotatedClass(Stock.class);
+			configuration.addAnnotatedClass(HistoryStock.class);
 
 			StandardServiceRegistryBuilder serviceRegistryBuilder = new StandardServiceRegistryBuilder();
 

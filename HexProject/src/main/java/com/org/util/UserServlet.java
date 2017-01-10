@@ -45,10 +45,10 @@ public class UserServlet extends HttpServlet {
 
 			// Validate the request
 			if (request.getParameter("DbaRequest") != null) {
-				System.out.println("Admin Request type is" + request.getParameter("adminRequest").toString());
+				System.out.println("Admin Request type is" + request.getParameter("DbaRequest").toString());
 				requestType = request.getParameter("DbaRequest").toString();
-				System.out.println(requestType);
-				System.out.println(request.getParameter("delete"));
+				/*System.out.println(requestType);
+				System.out.println(request.getParameter("delete"));*/
 			}
 			if (requestType.equalsIgnoreCase("adminAdd")) {
 				someUser = new User();

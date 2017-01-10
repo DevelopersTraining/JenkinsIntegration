@@ -4,14 +4,20 @@
 	import="java.io.*,java.util.ArrayList,com.org.bean.Item,java.util.Iterator"%>
 <html>
 <head>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"	
+	href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" >
 <link rel="stylesheet" href="login.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#example').DataTable( {
+	        "order": [[ 2, "desc" ]]
+	    } );
+	} );
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -43,15 +49,18 @@
 		<form action="StockHandlerServlet" method="post">
 
 			<div class="table-responsive">
-				<table class="table">
+				<table class="display" id="example">
+					<thead>
 					<tr>
 						<th>Id</th>
 						<th>Name</th>
 						<th>Description</th>
 						<th>Quantity</th>
 						<th>Vendor</th>
-						<th>Created Date</th>
+						<th>Created at</th>
 					</tr>
+					</thead>
+					<tbody>
 					<%
 						ArrayList<Item> stockList = (ArrayList<Item>) request.getAttribute("stockList");
 						System.out.println(stockList);
@@ -69,6 +78,7 @@
 					<%
 						}
 					%>
+					</tbody>
 				</table>
 				<input class="btn btn-primary btn-sm" type="submit"	name="stockButton" value="update" />
 				<input class="btn btn-primary btn-sm" type="submit" name="stockButton" value="delete" />

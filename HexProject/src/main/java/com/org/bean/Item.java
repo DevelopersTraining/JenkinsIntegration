@@ -1,53 +1,24 @@
-package com.org.pojo;
+package com.org.bean;
 
-import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class Item {
 
-@Entity
-@Table(name = "STOCK")
-public class Stock implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ITEM_ID")
 	private Long itemId;
-
-	@Column(name = "ITEM_NAME")
 	private String name;
-
-	@Column(name = "DESCRIPTION")
 	private String description;
-
-	@Column(name = "QUANTITY")
 	private Long quantity;
-
-	@Column(name = "CREATION_DATE")
 	private Date creationDate;
-
-	@Column(name = "VENDOR")
 	private String vendor;
 
-	public Stock() {
+	public Item() {
+	};
 
-	}
-
-	public Stock(Long itemId, String name, String description, Long quantity, Date creationDate, String vendor) {
-		this.itemId = itemId;
-		this.name = name;
-		this.description = description;
-		this.quantity = quantity;
+	public Item(Long itemid2, String name2, String description2, Long quantity2, Date creationDate, String vendor) {
+		this.itemId = itemid2;
+		this.name = name2;
+		this.description = description2;
+		this.quantity = quantity2;
 		this.creationDate = creationDate;
 		this.vendor = vendor;
 	}

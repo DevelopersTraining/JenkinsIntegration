@@ -5,53 +5,49 @@
 <html>
 
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="login.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
-<style>
-p.normal {
-    border: 2px solid red;
-	border-radius: 12px;
-	padding: 25px 50px;
-	background-color: lightgreen;
-	padding: 50px, 50px, 50px, 50px;
-}
-
-form {
-	position: fixed;
-	top: 40%;
-	left: 40%;
-	width: 250px;
-}
-</style>
-
 </head>
+
+<!-- <form action="form_action.asp">
+  Radio Button: <input type="radio" id="myRadio" name="test"required>
+  <input type="submit">
+</form> -->
+
 <body>
-
-
-
-<body style="background-color:powderblue;">
-	<header>
-	<h1 align="center">
-		<font color="blue">STOCK INVENTORY MANAGEMENT</font>
-	</h1>
-	</header>
-	<div style="float: left;"><img src="Inventory.jpg" alt="Mountain View"
-		style="width: 304px; height: 228px;"></div>
-		<div style="float: right;"><img src="stock-inventory-management-system-with-pos-point-of-sale-500x500.jpg" alt="Inventory View"
-		style="width: 304px; height: 228px;"></div>
-	<form action="loginServlet" method="post">
-		<center>
-		<p class ="normal">
-		
-			<font color="maroon">User Name :</font><input type="text"
-			name="AdminId" /><br />
-			<br/> <font color="maroon">Password :</font><input type="password" name="Password" /><br />
-			<br/> <font color="red"><input type="radio" name="user_type" value="dba">DBA
-			User<br /></font><font color="red"> <input type="radio" name="user_type" value="other">
-			Other Users<br></font> <br> <input type="submit" value="login" />
-			<button type="reset" value="Cancel">Cancel</button></p>
-		</center>
-	</form>
-	</center>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <h1 class="text-center login-title"> HexaStore, Welcome!</h1>
+            <div class="account-wall">
+                <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+                    alt="">
+                <form class="form-signin" action="loginServlet" method="post">
+                <input type="text" class="form-control" placeholder="User Name" name="AdminId" required autofocus>
+                <input type="password" name="Password" class="form-control" placeholder="Password" required>
+                <p style="font-size: 16px"><input type="radio" name="user_type" value="dba"required>
+                	DBA User</p>
+				<p style="font-size: 16px"><input type="radio" name="user_type" value="other"required>
+					Other Users</p>
+				<input class="btn btn-lg btn-primary btn-block" type="submit" value="Log in" />
+				<button class="btn btn-lg btn-primary btn-block" type="reset" value="Cancel">Cancel</button></p>
+                 
+                <label class="checkbox pull-left">
+                    <input type="checkbox" value="remember-me">
+                    Remember me
+                </label>
+                <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+                </form>
+            <%if(request.getAttribute("loginError") != null){%>
+                	<span style="color:red; font-size=12px" ><%= request.getAttribute("loginError").toString() %></span>
+            <%} %>    
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

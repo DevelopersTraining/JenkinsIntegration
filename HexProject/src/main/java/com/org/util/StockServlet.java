@@ -40,9 +40,12 @@ public class StockServlet extends HttpServlet {
 		request.setAttribute("stockList", stockItems);
 
 		String responsePage = "admin.jsp";
+		System.out.println("In Stock Servlet");
+		System.out.println(request.getParameter("stockRedirect"));
 
 		if (request.getParameter("stockRedirect") != null) {
 			responsePage = "user.jsp";
+			System.out.println("Redirecting to user page");
 		}
 
 		request.getRequestDispatcher(responsePage).forward(request, response);

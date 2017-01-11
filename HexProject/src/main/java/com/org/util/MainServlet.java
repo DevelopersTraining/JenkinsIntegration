@@ -50,12 +50,17 @@ public class MainServlet extends HttpServlet {
 		if (isValid != null) {
 			if (userType.equals("dba")) {
 				// response.getWriter().append("DBA Logged In");
+				// System.out.println("Logged in as DBA");
 				request.getRequestDispatcher("/userServlet").forward(request, response);
 			} else {
 				String role = isValid.getRoleName();
+				request.getSession().setAttribute("userName", userName);
+				request.getSession().setAttribute("roleName", role);
 				if (role.equalsIgnoreCase("Admin")) {
+					// System.out.println("Logged in as Admin");
 					request.getRequestDispatcher("/stockServlet").forward(request, response);
 				} else {
+					// System.out.println("Logged in as User");
 					// AppGenericDao appDao = new AppGenericDao();
 					// List<Item> stockItems = appDao.getRows();
 					// request.setAttribute("stockList", stockItems);

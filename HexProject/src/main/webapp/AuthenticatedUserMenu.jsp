@@ -18,7 +18,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>New Items Report</title>
+<title>Authenticated User Menu</title>
 
 </head>
 <body>
@@ -32,7 +32,9 @@
 			<form action="Login.jsp" class="navbar-form navbar-right">
 				<input class="btn btn-success" type="submit" value="Sign Off" />
 			</form>
+			
 		</div>
+		<a class="navbar-brand" href="#">Logged in as <%=request.getSession().getAttribute("roleName")%>: <%=request.getSession().getAttribute("userName")%></a>
 		<div id="navbar" class="navbar-collapse collapse"></div>
 		<!--/.navbar-collapse -->
 	</div>
@@ -43,16 +45,17 @@
 		<div>
 		</div>
 	</div>
-	 <h1 class="text-center login-title"> REPORTS ON NEW ITEMS</h1>
+	 <h1 class="text-center login-title">AUTHENTICATED USER MENU</h1>
 	<center>
 	
-		<form action="reportServlet" method="post">
-			<p><a class="btn btn-primary btn-lg" href="reportServlet" role="button">View Report &raquo;</a></p>
+		<form action="ItemReport.jsp" method="post">
+			<input class="btn btn-primary btn-lg" type="submit" value="View Report &raquo;" />
 		</form>
 		
 
 		<form action="stockServlet" method="post">
-				<p><a class="btn btn-primary btn-lg" href="stockServlet" role="button">View Stock &raquo;</a></p>
+			<input type="hidden" name="stockRedirect" value="user">
+			<input class="btn btn-primary btn-lg" type="submit" value="View Stock &raquo;" />
 		</form>
 	<hr>
 	</center>

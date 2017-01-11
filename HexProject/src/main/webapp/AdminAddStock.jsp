@@ -21,6 +21,7 @@
     		<input class="btn btn-success" type="submit" value="Sign Off" />
 		  </form>
         </div>
+        <a class="navbar-brand" href="#">Logged in as <%=request.getSession().getAttribute("roleName")%>: <%=request.getSession().getAttribute("userName")%></a>
         <div id="navbar" class="navbar-collapse collapse">
           
         </div><!--/.navbar-collapse -->

@@ -6,7 +6,7 @@
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
-<title>Insert title here</title>
+<title>Item List</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
@@ -32,6 +32,7 @@ $(document).ready(function(){
 					<input class="btn btn-success" type="submit" value="Sign Off" />
 				</form>
 			</div>
+			<a class="navbar-brand" href="#">Logged in as <%=request.getSession().getAttribute("roleName")%>: <%=request.getSession().getAttribute("userName")%></a>
 			<div id="navbar" class="navbar-collapse collapse"></div>
 			<!--/.navbar-collapse -->
 		</div>
@@ -40,12 +41,15 @@ $(document).ready(function(){
 	<!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
 		<div class="">
-			<h1>Welcome, mushashon</h1>
+			<h1>Current items list</h1>
 		</div>
 	</div>
 
 	<div class="container">
 		<!-- Example row of columns -->
+		<form action="AuthenticatedUserMenu.jsp" method="post">
+			<input class="btn btn-primary btn-lt" type="submit" value="Back to Menu" />
+		</form>
 		<form>
 
 			<div class="table-responsive">

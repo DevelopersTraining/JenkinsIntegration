@@ -29,6 +29,7 @@
     		<input class="btn btn-success" type="submit" value="Sign Off" />
 		  </form>
         </div>
+        <a class="navbar-brand" href="#">Logged in as <%=request.getSession().getAttribute("roleName")%>: <%=request.getSession().getAttribute("userName")%></a>
         <div id="navbar" class="navbar-collapse collapse">
           
         </div><!--/.navbar-collapse -->
@@ -44,7 +45,7 @@
 
     <div class="container">
     	
-    	<div class="row">
+    	<div class="row">    	
     	<form action="reportServlet" method="post">
     		<div class='col-sm-4'>
 	        		<select name="reportType">
@@ -76,6 +77,11 @@
 	            	<input type="submit" value="Get Report">
 	         </div>
 	        </form>
+	        
+	     <form action="AuthenticatedUserMenu.jsp" method="post">
+			<input class="btn btn-primary btn-lt" type="submit" value="Back to Menu" />
+		</form>
+	        
 	    </div>
     
     

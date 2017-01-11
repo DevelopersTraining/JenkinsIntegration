@@ -28,20 +28,20 @@
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar"></button>
-				<a class="navbar-brand" href="#">Hexa Store</a>
-				<form action="Login.jsp" class="navbar-form navbar-right">
-					<input class="btn btn-success" type="submit" value="Sign Off" />
-				</form>
+	<div>
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar"></button>
+			<a class="navbar-brand" href="#">Hexa Store</a>
+			<div class="navbar-form navbar-right">
+				<a class="btn btn-success" href="Login.jsp">Sign Off</a>
 			</div>
-			<a class="navbar-brand" href="#">Logged in as <%=request.getSession().getAttribute("roleName")%>: <%=request.getSession().getAttribute("userName")%></a>
-			<div id="navbar" class="navbar-collapse collapse"></div>
-			<!--/.navbar-collapse -->
 		</div>
+		<a class="navbar-brand" style="float: right">Logged in as <%=request.getSession().getAttribute("roleName")%>: <%=request.getSession().getAttribute("userName")%></a>
+		<div id="navbar" class="navbar-collapse collapse"></div>
+		<!--/.navbar-collapse -->
+	</div>
 	</nav>
 
 	<!-- Main jumbotron for a primary marketing message or call to action -->

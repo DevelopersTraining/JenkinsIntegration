@@ -92,18 +92,19 @@
 
 					<div class="panel-body">
 						<center>
-
-
-							<input class="btn btn-primary btn-sm" type="hidden"
-								name="stockHandler" value=stockEdit> <input
+							<input 
+								class="btn btn-primary btn-sm" type="hidden"
+								name="stockHandler" value=stockEdit> 
+							<input
 								class="btn btn-primary btn-sm" type="submit" name="stockButton"
-								value="add" formnovalidate /> <input
+								value="add" formnovalidate /> 
+							<input
 								class="btn btn-primary btn-sm" type="submit" name="stockButton"
 								value="update" /> <input class="btn btn-primary btn-sm"
-								type="submit" name="stockButton" value="delete" /> <input
+								type="submit" name="stockButton" value="delete" /> 
+							<input
 								class="btn btn-primary btn-sm" type="hidden" name="stockHandler"
 								value="stockEdit" />
-
 						</center>
 					</div>
 				</div>

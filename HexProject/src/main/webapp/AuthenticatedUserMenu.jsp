@@ -47,12 +47,12 @@
 	<center>
 	
 		<form action="reportServlet" method="post">
-			<input type="submit" name="userSubmit" value="View Report">
+			<p><a class="btn btn-primary btn-lg" href="reportServlet" role="button">View Report &raquo;</a></p>
 		</form>
+		
 
 		<form action="stockServlet" method="post">
-			<input type="submit" name="userSubmit" value="View Stock"> <input
-				type="hidden" name="stockRedirect" value="listUser">
+				<p><a class="btn btn-primary btn-lg" href="stockServlet" role="button">View Stock &raquo;</a></p>
 		</form>
 	<hr>
 	</center>

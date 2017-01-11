@@ -59,7 +59,7 @@
 				<table class="table display" id="example">
 					<thead>
 						<tr>
-							<th>Id</th>
+							<th>Item</th>
 							<th>Name</th>
 							<th>Description</th>
 							<th>Quantity</th>
@@ -87,19 +87,30 @@
 						%>
 					</tbody>
 				</table>
-				<input class="btn btn-primary btn-sm" type="submit"
-					name="stockButton" value="update" /> <br></br> <input
-					class="btn btn-primary btn-sm" type="submit" name="stockButton"
-					value="delete" /> <input class="btn btn-primary btn-sm"
-					type="hidden" name="stockHandler" value=stockEdit>
+
+				<div class="panel panel-default">
+
+					<div class="panel-body">
+						<center>
+
+
+							<input class="btn btn-primary btn-sm" type="hidden"
+								name="stockHandler" value=stockEdit> <input
+								class="btn btn-primary btn-sm" type="submit" name="stockButton"
+								value="add" formnovalidate /> <input
+								class="btn btn-primary btn-sm" type="submit" name="stockButton"
+								value="update" /> <input class="btn btn-primary btn-sm"
+								type="submit" name="stockButton" value="delete" /> <input
+								class="btn btn-primary btn-sm" type="hidden" name="stockHandler"
+								value="stockEdit" />
+
+						</center>
+					</div>
+				</div>
+
 			</div>
 		</form>
-		<form action="StockHandlerServlet" method="post">
-			<input class="btn btn-primary btn-sm" type="hidden"
-				name="stockHandler" value=stockEdit> <input
-				class="btn btn-primary btn-sm" type="submit" name="stockButton"
-				value="add" />
-		</form>
+		<form action="StockHandlerServlet" method="post"></form>
 
 		<hr>
 

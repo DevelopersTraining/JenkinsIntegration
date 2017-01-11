@@ -114,7 +114,6 @@
 		<form action="StockHandlerServlet" method="post"></form>
 
 		<hr>
-
 		<footer>
 			<p>&copy; 2017 Company, Inc.</p>
 		</footer>

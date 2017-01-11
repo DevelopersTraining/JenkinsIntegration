@@ -41,10 +41,11 @@
     </nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron" style="padding-bottom: 0px">
+    <div class="jumbotron" style="padding-bottom: 0px;
+    								padding-left: 5px;">
       <div id="logo">
       <a href="/">
-        <img src="admin-dba.png" style="width: 100px;">
+        <img src="admin-dba.png" style="width: 80px;">
         <span>DBA Admin</span>
       </a>
     </div>
@@ -79,16 +80,18 @@
 			<% }%>
 	</tbody>
 		</table>
-		</div>
-			
+		</div>	
+		<input class="btn btn-primary btn-sm" type="submit" value="Delete"/>
+		<a class="btn btn-primary btn-sm" value="AddUser" onclick="document.getElementById('addForm').submit();">Add</a>
+		
 		</FORM>
 		<br>
 			<FORM action="UserAdminRegistration.jsp" id="addForm">
 			
 				 
 			</FORM>
-			<a class="btn btn-primary btn-sm" type="submit" value="AddUser" onclick="document.getElementById('addForm').submit();">Add</a>
-			<a class="btn btn-primary btn-sm" type="submit"  value="DeleteUser" onclick="document.getElementById('deleteForm').submit();">Delete</a>
+			
+			
 			
 			   <%if(request.getAttribute("selectButton") != null){%>
 			                	<span style="color:red; font-size=12px" ><%= request.getAttribute("selectButton").toString() %></span>
@@ -104,7 +107,13 @@
     <script type="text/javascript">
     function submitForm()
     {
-         document.getElementById("deleteForm").submit();
+    	var f = document.getElementById("deleteForm");
+    	if(f.checkValidity()) {
+    	    f.submit();
+    	  } else {
+    	    alert(document.getElementById('deleteForm').validationMessage);
+    	  }
+         
          document.getElementById("addForm").submit();
     } 
     </script>

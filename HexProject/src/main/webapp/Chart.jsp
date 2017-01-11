@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"
+	import="java.io.*,java.util.ArrayList,com.org.bean.Item,java.util.Iterator"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -38,7 +39,7 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="">
-        <h1>Charts Generator</h1>
+        <h1>Chart Generator</h1>
       </div>
     </div>
 
@@ -46,20 +47,37 @@
     	
     	<div class="row">
     	
-    		<div class='col-sm-4'>
+    	    <div class='col-sm-4'>
 	        	<div class="form-group">
-	        		<select id="example-getting-started" multiple="multiple">
-					    <option value="cheese">New Items</option>
-					    <option value="tomatoes">Deleted Items</option>
-					    <option value="mozarella">Updated Items</option>
+	        		<select id="item" >
+	        		<%
+						ArrayList<Item> stockList = (ArrayList<Item>) request.getAttribute("stockList");
+						System.out.println(stockList);
+						for (Item items : stockList) {
+					%>
+					    <option value="<%=items.getItemId()%>"><%=items.getName()%></option>
+					    
+					<%
+						}
+					%>
 					</select>
 	        	</div>
 	        </div>
     	
+<!--     		<div class='col-sm-2'> -->
+<!-- 	        	<div class="form-group"> -->
+<!-- 	        		<select id="elements" multiple="multiple"> -->
+<!-- 					    <option value="0">New Items</option> -->
+<!-- 					    <option value="1">Updated Items</option> -->
+<!-- 					    <option value="2">Deleted Items</option> -->
+<!-- 					</select> -->
+<!-- 	        	</div> -->
+<!-- 	        </div> -->
+    	
 	        <div class='col-sm-3'>
 	            <div class="form-group">
 	                <div class='input-group date' id='datetimepickerFrom'>
-	                    <input type='text' class="form-control" placeholder="Date From"/>
+	                    <input type='text' class="form-control" id="dtpFrom" placeholder="Date From" readonly/>
 	                    <span class="input-group-addon">
 	                        <span class="glyphicon glyphicon-calendar"></span>
 	                    </span>
@@ -70,7 +88,7 @@
 	       	<div class='col-sm-3'>
 	            <div class="form-group">
 	                <div class='input-group date' id='datetimepickerTo'>
-	                    <input type='text' class="form-control" placeholder="Date To"/>
+	                    <input type='text' class="form-control" id="dtpTo" placeholder="Date To" readonly/>
 	                    <span class="input-group-addon">
 	                        <span class="glyphicon glyphicon-calendar"></span>
 	                    </span>
@@ -104,6 +122,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
 	<script src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script> -->
+<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment-with-locales.min.js"></script> -->
 	<script src="http://davidstutz.github.io/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
 	
 	<script src="https://code.highcharts.com/highcharts.js"></script>
@@ -115,28 +135,34 @@
 	    	$('#datetimepickerFrom').datetimepicker({
 	    		showClear: true,
 	    		showClose: false,
-	    		format: 'MM/DD/YYYY'
+	    		format: 'MM/DD/YYYY',
+	    		ignoreReadonly : true
 	    	});
 	    	$('#datetimepickerTo').datetimepicker({
 	    		useCurrent: false,
 	    		showClear: true,
 	    		showClose: false,
-	    		format: 'MM/DD/YYYY'
+	    		format: 'MM/DD/YYYY',
+	    		ignoreReadonly : true
 	    	});
 	    	
 	        $("#datetimepickerFrom").on("dp.change", function (e) {
 	            $('#datetimepickerTo').data("DateTimePicker").minDate(e.date);
+			
 	        });
 	        $("#datetimepickerTo").on("dp.change", function (e) {
 	            $('#datetimepickerFrom').data("DateTimePicker").maxDate(e.date);
 	        });
 	        
 	    	
-	    	$('#example-getting-started').multiselect({
-
+	    	$('#elements').multiselect({
 	    		buttonWidth: '100%',
 	    		nonSelectedText: 'Select type of chart',
-	    		
+	    	});
+	    	
+	    	$('#item').multiselect({
+	    		buttonWidth: '100%',
+	    		nonSelectedText: 'Select Item',
 	    	});
 	    	
 	    	
@@ -147,9 +173,9 @@
    		        title: {
    		            text: 'Product stock quantity'
    		        },
-   		        subtitle: {
-   		            text: 'May 31 2016 and and June 1 2016'
-   		        },
+//    		        subtitle: {
+//    		            text: 'May 31 2016 and and June 1 2016'
+//    		        },
    		        xAxis: {
    		            type: 'datetime',
    		            labels: {
@@ -195,23 +221,42 @@
 	    	
 	    	$('#btnGenerate').click(function(){
 	    		
-	    		$.ajax({	
-	    			url: "charts",
-	    			method: "POST",
-	    			context: document.body,
-	    		}).done(function(data) {
-	    			
-	    			$('#container').show();
-	    	       	chart.addSeries({
-	    	        	name: 'ADBE',
-	    	            data: data
-	    	        });  
-	    			
-	    		}).fail(function()  {
-	    		    alert("Sorry. Server unavailable. ");
-	    		});
-
+	    		var item = $('#item').val();
+	    		var elements = $('#elements').val();
+	    		var dtpFrom = $('#dtpFrom').val();
+	    		var dtpTo = $('#dtpTo').val();
+	    		var itemDescription = $('#item option:selected').text();
 	    		
+	    		
+	    		if(checkValidations(item, elements, dtpFrom, dtpTo)){
+	    			
+		    		$.ajax({	
+		    			url: "charts",
+		    			method: "POST",
+		    			data: {
+		    				item : item,
+// 		    				elements : elements.join(),
+		    				dtpFrom : dtpFrom,
+		    				dtpTo : dtpTo
+		    			}
+		    		}).done(function(data) {
+		    			
+		    			while(chart.series.length > 0)
+		    			    chart.series[0].remove(true);
+		    			
+		    			$('#container').show();
+		    	       	chart.addSeries({
+		    	        	name: itemDescription,
+		    	            data: data
+		    	        });  
+		    	       	chart.setTitle(null, { text: 'From  '+dtpFrom+'  To  '+dtpTo });
+		    			
+		    		}).fail(function()  {
+		    		    alert("Sorry. Server unavailable. ");
+		    		});
+		    		
+	    		}
+	    			
 	    	});
 	    	
 	    	
@@ -220,7 +265,31 @@
 		
 		
 		
-		
+		function checkValidations(item, elements, dtpFrom, dtpTo){
+// 			alert(item);
+			if(item === undefined || item === null || item.length === 0){
+				alert("Please select an Item");
+				return false;
+			}
+			
+// 			if(elements === undefined || elements === null || elements.length === 0){
+// 				alert("Please select at least one type of chart");
+// 				return false;
+// 			}
+			
+			if(dtpFrom === undefined || dtpFrom === null || dtpFrom.length === 0){
+				alert("Please select the date From");
+				return false;
+			}
+			
+			if(dtpTo === undefined || dtpTo === null || dtpTo.length === 0){
+				alert("Please select the date To");
+				return false;
+			}
+			
+			
+			return true;
+		}
 		
 		
 	</script>

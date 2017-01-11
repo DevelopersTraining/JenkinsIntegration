@@ -4,11 +4,11 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="login.css">
+<link rel="stylesheet" href="general.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>Hexa Store</title>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -29,10 +29,13 @@
     </nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="">
-        <h1>Welcome</h1>
-      </div>
+    <div class="jumbotron" style="padding-bottom: 0px">
+      <div id="logo">
+      <a href="/">
+        <img src="admin-dba.png" style="width: 100px;">
+        <span>Add User</span>
+      </a>
+    </div>
     </div>
 
     <div class="container">

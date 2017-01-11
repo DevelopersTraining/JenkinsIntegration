@@ -2,22 +2,23 @@
 	pageEncoding="ISO-8859-1" import="java.io.*,com.org.bean.User,com.org.dao.UserDao"%>
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
-<title>Insert title here</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+<<link rel="stylesheet" href="general.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet"href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
 
-<script type="text/javascript">
-$(document).ready(function(){
-    $('#example').DataTable({
-    	"order":[[2,"desc"]]
-    });
-});
-</script>
-<title>Insert title here</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable({
+				"order" : [ [ 2, "desc" ] ]
+			});
+		});
+	</script>
+<title>Hexa Store</title>
 <% 
 Long userId = Long.parseLong(request.getParameter("userId"));
 User user= new UserDao().getUser(userId);
@@ -45,10 +46,13 @@ String  role  = user.getRoleName();
     </nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="">
-        <h1>DBA DELETE USERS PAGE</h1>
-      </div>
+    <div class="jumbotron" style="padding-bottom: 0px">
+      <div id="logo">
+      <a href="/">
+        <img src="admin-dba.png" style="width: 100px;">
+        <span>Delete User</span>
+      </a>
+    </div>
     </div>
 
     <div class="container">

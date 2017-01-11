@@ -1,5 +1,5 @@
 #logo {
-  text-align: center;
+  text-align: left;
   background-color: #ededed;
   padding: 1em 0;
 }
@@ -19,8 +19,13 @@
 }
 
 #logo span {
-  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
   font-size: 2em;
   font-family: 'Bree Serif', serif;
   margin-left: .2em;
+}
+
+.admin-img {
+	
+	width:180px;
 }

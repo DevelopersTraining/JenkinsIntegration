@@ -1,12 +1,17 @@
 package com.org.util;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.org.bean.Item;
+import com.org.dao.HistoryStockDao;
 
 /**
  * Servlet implementation class ReportServlet
@@ -35,12 +40,19 @@ public class ReportServlet extends HttpServlet {
 		String startDate = (String) request.getParameter("startDate");
 		String endDate = (String) request.getParameter("endDate");
 
+		HistoryStockDao history = new HistoryStockDao();
+
+		List<Item> report = new ArrayList<Item>();
+
 		if (type.equalsIgnoreCase("new")) {
-
+			report = history.generateReport(0, startDate, endDate);
+			request.setAttribute("stockList", report);
 		} else if (type.equalsIgnoreCase("deleted")) {
-
+			report = history.generateReport(2, startDate, endDate);
+			request.setAttribute("stockList", report);
 		} else if (type.equalsIgnoreCase("updated")) {
-
+			report = history.generateReport(1, startDate, endDate);
+			request.setAttribute("stockList", report);
 		}
 		request.setAttribute("reportType", type);
 		request.setAttribute("startDate", startDate);

@@ -38,7 +38,7 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="">
-        <h1>Charts Generator</h1>
+        <h1>Item Report Generator</h1>
       </div>
     </div>
 
@@ -82,9 +82,7 @@
       
     </div> <!-- /container -->
     
-    </br>
-    </br>
-    <div class="container" id="container" style="min-width: 310px; height: 400px; margin: 0 auto; display:none">
+    <div>
     
 	<%
 	if (request.getAttribute("stockList") != null) {
@@ -92,6 +90,7 @@
 		<table class="display" id="example">
 			<thead>
 				<tr>
+					<th>No.</th>
 					<th>Id</th>
 					<th>Name</th>
 					<th>Description</th>
@@ -104,11 +103,12 @@
 				<%
 						ArrayList<Item> stockList = (ArrayList<Item>) request.getAttribute("stockList");
 						System.out.println(stockList);
+						int i = 1;
 						for (Item items : stockList) {
 				%>
 				<tr>
-					<td><input type="radio" name="itemId"
-						value="<%=items.getItemId()%>" /></td>
+					<td><%=i %></td>
+					<td><%=items.getItemId()%></td>
 					<td><%=items.getName()%></td>
 					<td><%=items.getDescription()%></td>
 					<td><%=items.getQuantity()%></td>
@@ -116,6 +116,7 @@
 					<td><%=items.getCreationDate()%></td>
 				</tr>
 				<%
+							i++;
 						}
 				%>
 			</tbody>
@@ -216,7 +217,6 @@
    		        },
    		        
    		    });
-//    		});
 			
 	    	
 	    	

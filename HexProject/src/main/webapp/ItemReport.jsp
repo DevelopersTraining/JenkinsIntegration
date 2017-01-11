@@ -44,7 +44,7 @@
     </div>
 
     <div class="container">
-    	<form action="AdminUserMenu.jsp" method="post">
+    	<form action="AuthenticatedUserMenu.jsp" method="post">
 			<input class="btn btn-primary btn-lt" type="submit" value="Back to Menu" />
 	    </form>
     	<div class="row">    	
@@ -79,10 +79,6 @@
 	            	<input type="submit" value="Get Report">
 	         </div>
 	        </form>
-	        
-	     <form action="AuthenticatedUserMenu.jsp" method="post">
-			<input class="btn btn-primary btn-lt" type="submit" value="Back to Menu" />
-		</form>
 	        
 	    </div>
     

@@ -53,6 +53,9 @@
 
 	<div class="container">
 		<!-- Example row of columns -->
+		<form action="AdminUserMenu.jsp" method="post">
+			<input class="btn btn-primary btn-lt" type="submit" value="Back to Menu" />
+	    </form>
 		<form action="StockHandlerServlet" method="post">
 
 			<div class="table-responsive">

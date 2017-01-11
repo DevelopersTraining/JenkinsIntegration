@@ -58,7 +58,7 @@ public class MainServlet extends HttpServlet {
 				request.getSession().setAttribute("roleName", role);
 				if (role.equalsIgnoreCase("Admin")) {
 					// System.out.println("Logged in as Admin");
-					request.getRequestDispatcher("/stockServlet").forward(request, response);
+					request.getRequestDispatcher("AdminUserMenu.jsp").forward(request, response);
 				} else {
 					// System.out.println("Logged in as User");
 					// AppGenericDao appDao = new AppGenericDao();

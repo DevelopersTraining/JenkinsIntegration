@@ -44,7 +44,9 @@
     </div>
 
     <div class="container">
-    	
+    	<form action="AdminUserMenu.jsp" method="post">
+			<input class="btn btn-primary btn-lt" type="submit" value="Back to Menu" />
+	    </form>
     	<div class="row">    	
     	<form action="reportServlet" method="post">
     		<div class='col-sm-4'>

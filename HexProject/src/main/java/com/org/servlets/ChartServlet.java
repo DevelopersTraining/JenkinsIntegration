@@ -1,4 +1,4 @@
-package com.org.util;
+package com.org.servlets;
 
 import java.io.IOException;
 import java.text.DateFormat;

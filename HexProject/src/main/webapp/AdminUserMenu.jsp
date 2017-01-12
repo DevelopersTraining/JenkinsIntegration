@@ -51,7 +51,7 @@
 	 <h1 class="text-center login-title">ADMIN USER MENU</h1>
 	<center>
 	
-		<a class="btn btn-primary btn-lg" href="Chart.jsp">View Report &raquo</a><br><br>
+		<a class="btn btn-primary btn-lg" href="charts">View Report &raquo</a><br><br>
 		
 
 		<form action="stockServlet" method="post">

@@ -52,7 +52,7 @@
 	 <h1 class="text-center login-title">AUTHENTICATED USER MENU</h1>
 	<center>
 
-		<a class="btn btn-primary btn-lg" href="ItermReport.jsp">View Report &raquo</a><br><br>
+		<a class="btn btn-primary btn-lg" href="ItemReport.jsp">View Report &raquo</a><br><br>
 
 		<form action="stockServlet" method="post">
 			<input type="hidden" name="stockRedirect" value="user">

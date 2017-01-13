@@ -3,49 +3,53 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css">
-<link rel="stylesheet" href="https://eonasdan.github.io/bootstrap-datetimepicker/">
-<link rel="stylesheet" href="http://davidstutz.github.io/bootstrap-multiselect/dist/css/bootstrap-multiselect.css">
-<style>
-
-    .multiselect-container {
-        width: 100% !important;
-    }
-</style>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="general.css">
+<title>Hexa Store</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Item Report Page</title>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            
-          </button>
-          <a class="navbar-brand" href="#">Hexa Store</a>
-          <form action="Login.jsp" class="navbar-form navbar-right">
-    		<input class="btn btn-success" type="submit" value="Sign Off" />
-		  </form>
-        </div>
-        <a class="navbar-brand" href="#">Logged in as <%=request.getSession().getAttribute("roleName")%>: <%=request.getSession().getAttribute("userName")%></a>
-        <div id="navbar" class="navbar-collapse collapse">
-          
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
+    	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar"></button>
+				<a class="navbar-brand" href="AuthenticatedUserMenu.jsp">Hexa Store</a>
+				<form action="Login.jsp" class="navbar-form navbar-right">
+					<input class="btn btn-success" type="submit" value="Sign Off" />
+				</form>
+			</div>
+			<a class="navbar-brand" style="float: right">Logged in as <%=request.getSession().getAttribute("roleName")%>: <%=request.getSession().getAttribute("userName")%></a>
+			<div id="navbar" class="navbar-collapse collapse"></div>
+			<!--/.navbar-collapse -->
+		</div>
+	</nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="">
-        <h1>Item Report Generator</h1>
-      </div>
+	<div class="jumbotron" style="padding-bottom: 0px">
+    <div id="logo">
+      
+        <img src="store2.png" class="admin-img">      
+      
+      <span>Item Report Generator<</span>
     </div>
-
+    </div>
     <div class="container">
     	<form action="AuthenticatedUserMenu.jsp" method="post">
-			<input class="btn btn-primary btn-lt" type="submit" value="Back to Menu" />
+			<!--  input class="btn btn-primary btn-lt" type="submit" value="Back to Menu" / -->
 	    </form>
     	<div class="row">    	
     	<form action="reportServlet" method="post">

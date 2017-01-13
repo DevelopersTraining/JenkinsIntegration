@@ -26,7 +26,7 @@
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             
           </button>
-          <a class="navbar-brand" href="AuthenticatedUserMenu.jsp">Hexa Store</a>
+          <a class="navbar-brand" href="AdminUserMenu.jsp">Hexa Store</a>
           <form action="Login.jsp" class="navbar-form navbar-right">
     		<input class="btn btn-success" type="submit" value="Sign Off" />
 		  </form>

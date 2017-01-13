@@ -1,24 +1,24 @@
-
-<!-- <style> -->
-/* form { */
-/* 	position: fixed; */
-/* 	top: 40%; */
-/* 	left: 50%; */
-/* 	margin-top: -50px; */
-/* 	margin-left: -100px; */
-/* } */
-<!-- </style> -->
-
  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.io.*,com.org.bean.User,com.org.dao.UserDao"%>
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="login.css">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<<link rel="stylesheet" href="general.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet"href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable({
+				"order" : [ [ 2, "desc" ] ]
+			});
+		});
+	</script>
+<title>Hexa Store</title>
 <% 
 Long userId = Long.parseLong(request.getParameter("userId"));
 User user= new UserDao().getUser(userId);
@@ -28,28 +28,31 @@ String  role  = user.getRoleName();
 %>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            
-          </button>
-          <a class="navbar-brand" href="#">Hexa Store</a>
-          <form action="Login.jsp" class="navbar-form navbar-right">
-    		<input class="btn btn-success" type="submit" value="Sign Off" />
-		  </form>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div>
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar"></button>
+			<a class="navbar-brand" href="userServlet">Hexa Store</a>
+			<div class="navbar-form navbar-right">
+				<a class="btn btn-success" href="Login.jsp">Sign Off</a>
+			</div>
+		</div>
+		<a class="navbar-brand" style="float: right">Logged in as <%=request.getSession().getAttribute("roleName")%>: <%=request.getSession().getAttribute("userName")%></a>
+		<div id="navbar" class="navbar-collapse collapse"></div>
+		<!--/.navbar-collapse -->
+	</div>
+	</nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>DBA DELETE USERS PAGE</h1>
-      </div>
+    <div class="jumbotron" style="padding-bottom: 0px">
+      <div id="logo">
+      <a href="/">
+        <img src="admin-dba.png" style="width: 100px;">
+        <span>Delete User</span>
+      </a>
+    </div>
     </div>
 
     <div class="container">
@@ -57,19 +60,21 @@ String  role  = user.getRoleName();
       <form action="userServlet" method="post">
 		
 		<div class="table-responsive">
-		<table class="table">
+		<table class="table" id="example">
+			<thead>
 			<tr>
-					<td>UserName:</td>
+				<th>User Name</th>
+				<th>Password</th>
+				<th>Role</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr>				
 					<td><%=name%></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
 					<td><%=password%></td>
+					<td><%= role %></td>								
 				</tr>
-				<tr>
-					<td>Role:</td>
-					<td><%= role %></td>
-				</tr>
+			</tbody>
 		</table>
 		</div>
 			<input  class="btn btn-primary btn-sm"type="submit" name="delete" value="delete" />

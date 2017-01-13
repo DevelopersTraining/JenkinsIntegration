@@ -3,35 +3,38 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="login.css">
+<link rel="stylesheet" href="general.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>Hexa Store</title>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            
-          </button>
-          <a class="navbar-brand" href="#">Hexa Store</a>
-          <form action="Login.jsp" class="navbar-form navbar-right">
-    		<input class="btn btn-success" type="submit" value="Sign Off" />
-		  </form>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+		<div>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar"></button>
+				<a class="navbar-brand" href="stockServlet">Hexa Store</a>
+				<form action="Login.jsp" class="navbar-form navbar-right">
+					<input class="btn btn-success" type="submit" value="Sign Off" />
+				</form>
+			</div>
+			<a class="navbar-brand" style="float: right">Logged in as <%=request.getSession().getAttribute("roleName")%>: <%=request.getSession().getAttribute("userName")%></a>
+			<div id="navbar" class="navbar-collapse collapse"></div>
+			<!--/.navbar-collapse -->
+		</div>
+	</nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>ADMIN ADD STOCK PAGE</h1>
-      </div>
+    <div class="jumbotron" style="padding-bottom: 0px">
+    <div id="logo">
+      <a href="/">
+        <img src="store2.png" style="width: 200px;">
+        <span>Add Stock</span>
+      </a>
+    </div>
     </div>
 
     <div class="container">

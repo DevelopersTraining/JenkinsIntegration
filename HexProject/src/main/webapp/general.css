@@ -1,0 +1,31 @@
+#logo {
+  text-align: left;
+  background-color: #ededed;
+  padding: 1em 0;
+}
+
+#logo a {
+  text-decoration: none;
+  color: #414142;
+  position: relative;
+}
+
+#logo a:active {
+  background: none;
+}
+
+#logo img {
+  vertical-align: middle;
+}
+
+#logo span {
+  vertical-align: -webkit-baseline-middle;
+  font-size: 2em;
+  font-family: 'Bree Serif', serif;
+  margin-left: .2em;
+}
+
+.admin-img {
+	
+	width:180px;
+}

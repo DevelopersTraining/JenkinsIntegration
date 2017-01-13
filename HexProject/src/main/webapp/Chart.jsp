@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css">
 <link rel="stylesheet" href="https://eonasdan.github.io/bootstrap-datetimepicker/">
 <link rel="stylesheet" href="http://davidstutz.github.io/bootstrap-multiselect/dist/css/bootstrap-multiselect.css">
+<link rel="stylesheet" href="general.css">
 <style>
 
     .multiselect-container {
@@ -16,7 +17,7 @@
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Charts</title>
+<title>Insert title here</title>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -25,7 +26,7 @@
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             
           </button>
-          <a class="navbar-brand" href="AdminUserMenu.jsp">Hexa Store</a>
+          <a class="navbar-brand" href="AuthenticatedUserMenu.jsp">Hexa Store</a>
           <form action="Login.jsp" class="navbar-form navbar-right">
     		<input class="btn btn-success" type="submit" value="Sign Off" />
 		  </form>
@@ -37,10 +38,13 @@
     </nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="">
-        <h1>Chart Generator</h1>
-      </div>
+    <div class="jumbotron" style="padding-bottom: 0px">
+    <div id="logo">
+      
+        <img src="store2.png" class="admin-img">      
+      
+      <span>Chart Generator</span>
+    </div>
     </div>
 
     <div class="container">
@@ -69,7 +73,7 @@
 <!-- 	        		<select id="elements" multiple="multiple"> -->
 <!-- 					    <option value="0">New Items</option> -->
 <!-- 					    <option value="1">Updated Items</option> -->
-<!-- 					    <option value="2">Deleted Items</option> -->
+<!-- 					    <option valubutte="2">Deleted Items</option> -->
 <!-- 					</select> -->
 <!-- 	        	</div> -->
 <!-- 	        </div> -->

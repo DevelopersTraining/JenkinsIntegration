@@ -3,22 +3,43 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+
+<!-- Styles -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
 <link rel="stylesheet" href="general.css">
-<title>Hexa Store</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript"
-	src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript"
-	src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css">
+<link rel="stylesheet" href="https://eonasdan.github.io/bootstrap-datetimepicker/">
+<link rel="stylesheet" href="http://davidstutz.github.io/bootstrap-multiselect/dist/css/bootstrap-multiselect.css">
+<!-- End styles -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Item Report Page</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+<script src="http://davidstutz.github.io/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#example').DataTable({
+			"order" : [ [ 2, "desc" ] ]
+		});
+	});
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Hexa Store</title>
+
+<style>
+
+    .multiselect-container {
+        width: 100% !important;
+    }
+</style>
 </head>
 <body>
     	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -54,12 +75,18 @@
     	<div class="row">    	
     	<form action="reportServlet" method="post">
     		<div class='col-sm-4'>
-	        		<select name="reportType">
-						<option value="new" <%=(request.getAttribute("reportType")!=null)?((request.getAttribute("reportType").toString().equalsIgnoreCase("new"))?"selected":""):"" %>>New Items</option>
-						<option value="deleted" <%=(request.getAttribute("reportType")!=null)?((request.getAttribute("reportType").toString().equalsIgnoreCase("deleted"))?"selected":""):"" %>>Deleted Items</option>
-						<option value="updated" <%=(request.getAttribute("reportType")!=null)?((request.getAttribute("reportType").toString().equalsIgnoreCase("updated"))?"selected":""):"" %>>Updated Items</option>
+					<select name="reportType" id="elements">
+						<option value="new"
+							<%=(request.getAttribute("reportType")!=null)?((request.getAttribute("reportType").toString().equalsIgnoreCase("new"))?"selected":""):"" %>>New
+							Items</option>
+						<option value="deleted"
+							<%=(request.getAttribute("reportType")!=null)?((request.getAttribute("reportType").toString().equalsIgnoreCase("deleted"))?"selected":""):"" %>>Deleted
+							Items</option>
+						<option value="updated"
+							<%=(request.getAttribute("reportType")!=null)?((request.getAttribute("reportType").toString().equalsIgnoreCase("updated"))?"selected":""):"" %>>Updated
+							Items</option>
 					</select>
-	        </div>
+				</div>
     	
 	        <div class='col-sm-3'>
 	                <div class='input-group date' id='datetimepickerFrom'>
@@ -80,7 +107,7 @@
 	        </div>
 	        
 	         <div class='col-sm-2'>
-	            	<input type="submit" value="Get Report">
+	            	<button type="submit" value="Get Report" class="btn btn-primary">Get Report</button>
 	         </div>
 	        </form>
 	        
@@ -89,13 +116,15 @@
     
       
     </div> <!-- /container -->
-    
-    <div>
+    <br>
+    <br>
+    <div class="container">
     
 	<%
 	if (request.getAttribute("stockList") != null) {
 	%>
-		<table class="display" id="example">
+		<div class="table-responsive">
+		<table class="table display" id="example">
 			<thead>
 				<tr>
 					<th>No.</th>
@@ -129,8 +158,9 @@
 				%>
 			</tbody>
 		</table>
+		
 		<%} %>
-    
+    </div>
     </div>
     
     <hr>
@@ -168,12 +198,13 @@
 	        });
 	        
 	    	
-	    	$('#example-getting-started').multiselect({
+	    	$('#elements').multiselect({
 
 	    		buttonWidth: '100%',
 	    		nonSelectedText: 'Select type of chart',
 	    		
 	    	});
+	    	
 	    	
 	    	
 	    	var chart = Highcharts.chart('container', {

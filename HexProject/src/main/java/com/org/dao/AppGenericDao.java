@@ -158,11 +158,11 @@ public class AppGenericDao {
 
 		Stock updated = new Stock();
 		updated.setItemId(item.getItemId());
-		updated.setDescription(item.getDescription());
+		updated.setDescription(item.getDescription().trim());
 		updated.setName(item.getName());
 		updated.setQuantity(item.getQuantity());
 		updated.setVendor(item.getVendor());
-		updated.setCreationDate(item.getCreationDate());
+		updated.setCreationDate(new Date(Calendar.getInstance().getTime().getTime()));
 		session.merge(updated);
 		t.commit();
 		session.close();

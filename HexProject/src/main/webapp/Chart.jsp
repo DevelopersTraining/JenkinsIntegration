@@ -16,7 +16,7 @@
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Charts</title>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -25,7 +25,7 @@
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             
           </button>
-          <a class="navbar-brand" href="#">Hexa Store</a>
+          <a class="navbar-brand" href="AdminUserMenu.jsp">Hexa Store</a>
           <form action="Login.jsp" class="navbar-form navbar-right">
     		<input class="btn btn-success" type="submit" value="Sign Off" />
 		  </form>

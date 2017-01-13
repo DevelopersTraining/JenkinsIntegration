@@ -44,7 +44,7 @@
       
         <img src="store2.png" class="admin-img">      
       
-      <span>Item Report Generator<</span>
+      <span>Item Report Generator</span>
     </div>
     </div>
     <div class="container">

@@ -133,7 +133,7 @@
 					<th>Description</th>
 					<th>Quantity</th>
 					<th>Vendor</th>
-					<th><%=(request.getAttribute("date")) !=null?request.getAttribute("date").toString():""%></th>
+					<th>Date</th>
 				</tr>
 			</thead>
 			<tbody>
